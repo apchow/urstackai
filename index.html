@@ -1852,11 +1852,11 @@
         id: "wf-egm-goldfish-spec-guard-model-migration-scanner",
         title: "Elephant-Goldfish Zero-Context Spec Reviewer + Nov 30/Dec 1 Model Deprecation Scanner (Google EGM + Startup Hook Audit)",
         category: "Claude Code & MCP",
-        price: "$9",
         badge: "NEW · NOV 9",
-        desc: "3-in-1 harness guard inspired by Google's open-source Elephant-Goldfish Model (EGM) plugin, Ai2 StateBench, and the Nov 30 / Dec 1 model retirement deadlines. Scans repos for retiring claude-sonnet-4-5 and gemini-2.5-pro/flash IDs, audits .claude/.codex for silent third-party startup hooks (Postman pattern), and initializes a 5-stage zero-context Goldfish spec review.",
-        saves: "Saves ~7 hrs/wk on spec drift & prevents Nov 30 / Dec 1 production outages from retired Claude/Gemini IDs",
-        code: `#!/usr/bin/env bash
+        outcome: "Saves ~7 hrs/wk on spec drift & prevents Nov 30 / Dec 1 production outages from retired Claude/Gemini IDs",
+        description: "3-in-1 harness guard inspired by Google's open-source Elephant-Goldfish Model (EGM) plugin, Ai2 StateBench, and the Nov 30 / Dec 1 model retirement deadlines. Scans repos for retiring claude-sonnet-4-5 and gemini-2.5-pro/flash IDs, audits .claude/.codex for silent third-party startup hooks (Postman pattern), and initializes a 5-stage zero-context Goldfish spec review.",
+        packPrice: 9,
+        prompt: `#!/usr/bin/env bash
 # UrStack AI Vault — Google EGM Spec Reviewer + Nov 30/Dec 1 Deprecation & Startup Hook Scanner
 # Pattern: Google Elephant-Goldfish Model (EGM) + Claude Sonnet 5.5 / Gemini 3.8 Migration + Hook Audit
 set -euo pipefail
@@ -1920,11 +1920,11 @@ echo "✅ Ready: \$REPO_DIR/.urstack/egm_goldfish_review_checklist.md"`
         id: "wf-cloudflare-6phase-disprove-verifier-mcp-pool",
         title: "6-Phase Adversarial Security Verifier + Shared MCP Pool Config (Cloudflare Audit + Claude Code 2.1.319 Pattern)",
         category: "Claude Code & MCP",
-        price: "$9",
         badge: "NEW · NOV 8",
-        desc: "Pairs Claude Code 2.1.319's unattended permissions.denyInsteadOfPrompting + background MCP task execution and OpenCode 2.2.6's shared MCP connection pooling (pool: true) with Cloudflare's 6-phase adversarial security audit pattern—forcing a fresh verifier pass to disprove every candidate vulnerability before alerting.",
-        saves: "Saves ~6.5 hrs/wk on false-positive security triage & cuts multi-project MCP daemon RAM by ~60%",
-        code: `#!/usr/bin/env bash
+        outcome: "Saves ~6.5 hrs/wk on false-positive security triage & cuts multi-project MCP daemon RAM by ~60%",
+        description: "Pairs Claude Code 2.1.319's unattended permissions.denyInsteadOfPrompting + background MCP task execution and OpenCode 2.2.6's shared MCP connection pooling (pool: true) with Cloudflare's 6-phase adversarial security audit pattern—forcing a fresh verifier pass to disprove every candidate vulnerability before alerting.",
+        packPrice: 9,
+        prompt: `#!/usr/bin/env bash
 # UrStack AI Vault — 6-Phase Adversarial Security Verifier + Shared MCP Pool Config
 # Pattern: Cloudflare 6-Phase Audit Skill + Claude Code 2.1.319 + OpenCode 2.2.6 (pool: true)
 set -euo pipefail
@@ -1992,11 +1992,11 @@ PY`
         id: "wf-vibe-compliance-sticky-cache-router",
         title: "Vibe-Code Legal/Privacy Compliance Scanner + OpenRouter Sticky Cache Wrapper (Stroq + OpenRouter Pattern)",
         category: "Security & QA",
-        price: "$9",
         badge: "NEW · NOV 7",
-        desc: "Audits vibe-coded Next.js/React/HTML apps for the 6 highest-risk legal & agent-security traps (Google Fonts GDPR IP leaks, unmasked session-replay CIPA wiretapping inputs, missing List-Unsubscribe headers, and Claude Code v2.1.318 User-Agent email leaks) while wrapping multi-turn agent calls with OpenRouter's x-session-id sticky prompt-cache header.",
-        saves: "Saves ~5 hrs/launch on GDPR/CIPA/ROSCA compliance audits & cuts multi-turn agent input token costs by ~75%",
-        code: `#!/usr/bin/env bash
+        outcome: "Saves ~5 hrs/launch on GDPR/CIPA/ROSCA compliance audits & cuts multi-turn agent input token costs by ~75%",
+        description: "Audits vibe-coded Next.js/React/HTML apps for the 6 highest-risk legal & agent-security traps (Google Fonts GDPR IP leaks, unmasked session-replay CIPA wiretapping inputs, missing List-Unsubscribe headers, and Claude Code v2.1.318 User-Agent email leaks) while wrapping multi-turn agent calls with OpenRouter's x-session-id sticky prompt-cache header.",
+        packPrice: 9,
+        prompt: `#!/usr/bin/env bash
 # UrStack AI Vault — Vibe-Code Legal/Privacy Compliance Scanner + OpenRouter Sticky Cache Wrapper
 # Pattern: Stroq Secret Guard + Ray Fu 6-Point Legal Audit + OpenRouter Sticky Routing (x-session-id)
 set -euo pipefail
@@ -2058,11 +2058,11 @@ echo "✅ Sticky cache template ready at \$REPO_DIR/.urstack/openrouter_sticky_r
         id: "wf-kimi-k31-claude-launch-live-app-gate",
         title: "Zero-Retention Kimi K3.1 Pro Claude Launcher + Pre-Publish Live App Security Gate",
         category: "Claude Code & MCP",
-        price: "$9",
         badge: "NEW · NOV 6",
-        desc: "2-stage pre-deploy security gate and zero-retention 1M-context coding launcher combining Cursor Live Apps' deterministic/agentic pre-publish check pattern with Ollama Cloud's Kimi K3.1 Pro (2.8T MoE / 104B active) integration for Claude Code. Blocks accidental .env/.vercel leaks and row-locking regressions before deploying to production.",
-        saves: "Saves ~6 hrs/wk on pre-deploy security audits & cuts 1M-context frontier coding token spend by ~68%",
-        code: `#!/usr/bin/env bash
+        outcome: "Saves ~6 hrs/wk on pre-deploy security audits & cuts 1M-context frontier coding token spend by ~68%",
+        description: "2-stage pre-deploy security gate and zero-retention 1M-context coding launcher combining Cursor Live Apps' deterministic/agentic pre-publish check pattern with Ollama Cloud's Kimi K3.1 Pro (2.8T MoE / 104B active) integration for Claude Code. Blocks accidental .env/.vercel leaks and row-locking regressions before deploying to production.",
+        packPrice: 9,
+        prompt: `#!/usr/bin/env bash
 # UrStack AI Vault — Zero-Retention Kimi K3.1 Pro Claude Launcher + Live App Security Gate
 # Pattern: Cursor Live Apps Pre-Publish Gate + Ollama Cloud Kimi K3.1 Pro (2.8T MoE, 1M Context)
 set -euo pipefail
@@ -2115,11 +2115,11 @@ fi`
         id: "wf-nemotron-vl-spec-diff-secret-injector",
         title: "Visual UI Spec-Diff & Zero-Context Secret Injector (Nemotron 3.5 VL + OpenHands Pattern)",
         category: "Claude Code & MCP",
-        price: "$9",
         badge: "NEW · NOV 5",
-        desc: "2-stage visual UI verification and zero-context credential injection pipeline inspired by OpenHands Agent Canvas and NVIDIA Nemotron 3.5 Super VL. Diffs live localhost Playwright screenshots against PDF/Figma design specs while injecting runtime secrets directly into subprocesses so API keys never enter LLM chat context.",
-        saves: "Saves ~5.5 hrs/wk on UI visual regression QA & prevents credential leaks in agent transcripts",
-        code: `#!/usr/bin/env bash
+        outcome: "Saves ~5.5 hrs/wk on UI visual regression QA & prevents credential leaks in agent transcripts",
+        description: "2-stage visual UI verification and zero-context credential injection pipeline inspired by OpenHands Agent Canvas and NVIDIA Nemotron 3.5 Super VL. Diffs live localhost Playwright screenshots against PDF/Figma design specs while injecting runtime secrets directly into subprocesses so API keys never enter LLM chat context.",
+        packPrice: 9,
+        prompt: `#!/usr/bin/env bash
 # UrStack AI Vault — Visual UI Spec-Diff & Zero-Context Secret Injector
 # Pattern: OpenHands Agent Canvas + NVIDIA Nemotron 3.5 Super VL
 set -euo pipefail
@@ -2341,7 +2341,6 @@ Execute the following 3-step decomposition:
 2. Surgical Refactor: Provide the exact modular separation code, keeping each individual block under 2,000 tokens so any LLM can edit it in one shot without crashing.
 3. Surgical Patch Protocol: Generate a standardized system prompt I can give to Gemini Argon / Claude so it only outputs targeted unified diffs instead of re-emitting the entire 1,000+ line file.`
       },
-
       {
         title: "Gemini 2.5 Deprecation & Pipeline Migration Sentinel",
         category: "Claude Code & MCP",
@@ -2443,9 +2442,28 @@ Post 2: A structured architectural comparison with a clean bullet list. Zero hyp
 2. Flag duplicate tools, silent tier increases, or converted trials.
 3. Draft concise cancellation or refund request emails for each flagged vendor.`
       }
-    ];
+    ];;
 
     const initialTools = [
+      {
+        name: "Freebuff Desktop (Zero-Config Local Coding Agent)",
+        category: "Vibe Coding & IDEs",
+        bestFor: "Best for free, unlimited local AI coding across desktop, mobile, terminal & web with zero setup",
+        verdict: "Freebuff Desktop ships a zero-config AI coding agent that builds and deploys apps across desktop, mobile, terminal, and web on a free unlimited tier, so UrStack workflow bundles can run locally without a metered cloud seat.",
+        pricing: "Free (Unlimited Local Tier)",
+        url: "https://freebuff.com/desktop",
+        featured: true
+      },
+      {
+        name: "Exvisit Studio (exvisit.in)",
+        category: "Vibe Coding & IDEs",
+        bestFor: "Best for India-priced chat and design-first app building from ₹150/month",
+        verdict: "Exvisit Studio is an India-built AI coding agent pairing chat with design tools from ₹150/month, giving UrStack buyers a rupee-denominated alternative to dollar-billed Western agent subscriptions.",
+        pricing: "From ₹150/month",
+        url: "https://exvisit.in",
+        featured: true
+      },
+
       {
         name: "Google Elephant-Goldfish Model (EGM) + ADK 2.14 A2A",
         category: "Agent Frameworks",
@@ -2852,7 +2870,7 @@ Post 2: A structured architectural comparison with a clean bullet list. Zero hyp
 
     let activeWfCat = "All";
     let activeDirCat = "All";
-    const STORAGE_KEY_TOOLS = "urstack_ai_tools_v2026_11_09";
+    const STORAGE_KEY_TOOLS = "urstack_ai_tools_v2026_11_09_b";
 let savedCustomTools = [];
 try {
   const rawSaved = JSON.parse(localStorage.getItem(STORAGE_KEY_TOOLS) || "null");
@@ -2895,11 +2913,19 @@ let dirTools = [...initialTools, ...savedCustomTools];
       const grid = document.getElementById("workflowsGrid");
       grid.innerHTML = "";
 
-      workflowsData.filter(w => {
+      workflowsData.forEach((w, realIdx) => {
+        const outcomeText = w.outcome || w.saves || "Saves 5+ hrs/wk with production-tested agent automation";
+        const descText = w.description || w.desc || "";
+        const priceNum = typeof w.packPrice === "number" ? w.packPrice : (parseInt(String(w.price || "9").replace(/[^0-9]/g, ""), 10) || 9);
+
         const catOk = activeWfCat === "All" || w.category === activeWfCat;
-        const qOk = !q || (w.title && w.title.toLowerCase().includes(q)) || (w.desc && w.desc.toLowerCase().includes(q));
-        return catOk && qOk;
-      }).forEach((w, idx) => {
+        const qOk = !q ||
+          (w.title || "").toLowerCase().includes(q) ||
+          outcomeText.toLowerCase().includes(q) ||
+          descText.toLowerCase().includes(q);
+        if (!catOk || !qOk) return;
+
+        const safeTitle = (w.title || "").replace(/'/g, "");
         const card = document.createElement("div");
         card.className = "card";
         card.innerHTML = `
@@ -2908,11 +2934,12 @@ let dirTools = [...initialTools, ...savedCustomTools];
               <div class="card-title">${w.title || ""}</div>
               <span class="badge">${w.category || ""}</span>
             </div>
-            <div class="sub-label">${w.desc ? w.desc.split(' ').slice(0, 20).join(' ') + "..." : ""}</div>
+            <div class="sub-label">${outcomeText}</div>
+            <div class="desc">${descText}</div>
           </div>
           <div class="card-footer">
-            <button class="btn" onclick="openPromptModal(${idx})">View Prompt</button>
-            <button class="btn btn-primary" onclick="openCheckout('${(w.title || '').replace(/'/g, "")} Script Bundle', ${w.packPrice})">Get Script Bundle →</button>
+            <button class="btn" onclick="openPromptModal(${realIdx})">View Prompt</button>
+            <button class="btn btn-primary" onclick="openCheckout('${safeTitle} Script Bundle', ${priceNum})">Get Script Bundle →</button>
           </div>
         `;
         grid.appendChild(card);
@@ -2928,11 +2955,15 @@ let dirTools = [...initialTools, ...savedCustomTools];
 
     function openPromptModal(idx) {
       const w = workflowsData[idx];
-      document.getElementById("pmTitle").textContent = w.title;
-      document.getElementById("pmSub").textContent = w.outcome;
-      document.getElementById("pmCode").textContent = w.prompt;
+      if (!w) return;
+      const outcomeText = w.outcome || w.saves || "";
+      const promptText = w.prompt || w.code || "";
+      const priceNum = typeof w.packPrice === "number" ? w.packPrice : (parseInt(String(w.price || "9").replace(/[^0-9]/g, ""), 10) || 9);
+      document.getElementById("pmTitle").textContent = w.title || "";
+      document.getElementById("pmSub").textContent = outcomeText;
+      document.getElementById("pmCode").textContent = promptText;
       const buyBtn = document.getElementById("pmBuyBtn");
-      buyBtn.onclick = () => openCheckout(`${w.title} Script Bundle`, w.packPrice);
+      buyBtn.onclick = () => openCheckout(`${w.title} Script Bundle`, priceNum);
       openModal("promptModal");
     }
 
