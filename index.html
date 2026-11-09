@@ -2897,7 +2897,7 @@ let dirTools = [...initialTools, ...savedCustomTools];
 
       workflowsData.filter(w => {
         const catOk = activeWfCat === "All" || w.category === activeWfCat;
-        const qOk = !q || w.title.toLowerCase().includes(q) || w.outcome.toLowerCase().includes(q) || w.description.toLowerCase().includes(q);
+        const qOk = !q || (w.title && w.title.toLowerCase().includes(q)) || (w.outcome && w.outcome.toLowerCase().includes(q)) || (w.description && w.description.toLowerCase().includes(q));
         return catOk && qOk;
       }).forEach((w, idx) => {
         const card = document.createElement("div");
@@ -2905,15 +2905,15 @@ let dirTools = [...initialTools, ...savedCustomTools];
         card.innerHTML = `
           <div>
             <div class="card-top">
-              <div class="card-title">${w.title}</div>
-              <span class="badge">${w.category}</span>
+              <div class="card-title">${w.title || ""}</div>
+              <span class="badge">${w.category || ""}</span>
             </div>
-            <div class="sub-label">${w.outcome}</div>
-            <div class="desc">${w.description}</div>
+            <div class="sub-label">${w.outcome || ""}</div>
+            <div class="desc">${w.description || ""}</div>
           </div>
           <div class="card-footer">
             <button class="btn" onclick="openPromptModal(${idx})">View Prompt</button>
-            <button class="btn btn-primary" onclick="openCheckout('${w.title.replace(/'/g, "")} Script Bundle', ${w.packPrice})">Get Script Bundle →</button>
+            <button class="btn btn-primary" onclick="openCheckout('${(w.title || '').replace(/'/g, "")} Script Bundle', ${w.packPrice})">Get Script Bundle →</button>
           </div>
         `;
         grid.appendChild(card);
