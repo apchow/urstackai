@@ -2897,7 +2897,7 @@ let dirTools = [...initialTools, ...savedCustomTools];
 
       workflowsData.filter(w => {
         const catOk = activeWfCat === "All" || w.category === activeWfCat;
-        const qOk = !q || (w.title && w.title.toLowerCase().includes(q)) || (w.outcome && w.outcome.toLowerCase().includes(q)) || (w.description && w.description.toLowerCase().includes(q));
+        const qOk = !q || (w.title && w.title.toLowerCase().includes(q)) || (w.desc && w.desc.toLowerCase().includes(q));
         return catOk && qOk;
       }).forEach((w, idx) => {
         const card = document.createElement("div");
@@ -2908,8 +2908,7 @@ let dirTools = [...initialTools, ...savedCustomTools];
               <div class="card-title">${w.title || ""}</div>
               <span class="badge">${w.category || ""}</span>
             </div>
-            <div class="sub-label">${w.outcome || ""}</div>
-            <div class="desc">${w.description || ""}</div>
+            <div class="sub-label">${w.desc ? w.desc.split(' ').slice(0, 20).join(' ') + "..." : ""}</div>
           </div>
           <div class="card-footer">
             <button class="btn" onclick="openPromptModal(${idx})">View Prompt</button>
