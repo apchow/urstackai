@@ -1,0 +1,39 @@
+{
+  "name": "urstack-trace",
+  "version": "1.0.0",
+  "description": "Universal stack trace analyzer CLI — parse, diagnose, and fix errors across Python, Node.js, Go, Rust, and Java. Free open-source tool by UrStack AI.",
+  "main": "index.js",
+  "bin": {
+    "urstack-trace": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "stack-trace",
+    "traceback",
+    "error-analyzer",
+    "debugger",
+    "python-traceback",
+    "nodejs-error",
+    "go-panic",
+    "rust-backtrace",
+    "java-exception",
+    "error-parser",
+    "diagnostic",
+    "cli-tool",
+    "urstack",
+    "code-rescue",
+    "debug-tool"
+  ],
+  "author": "UrStack AI <chowdharyapoorv26txg@gmail.com> (https://urstack-ai.vercel.app)",
+  "license": "MIT",
+  "homepage": "https://urstack-ai.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apchow/urstack-trace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apchow/urstack-trace/issues"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "urstack-snippets",
+  "displayName": "UrStack AI Snippets — LLM & Agent Integration Patterns",
+  "description": "200+ code snippets for AI/LLM integration: OpenAI, Anthropic Claude, Google Gemini, Ollama, LangChain, and agent patterns. By UrStack AI.",
+  "version": "1.0.0",
+  "publisher": "urstack-ai",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Snippets",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "llm",
+    "openai",
+    "anthropic",
+    "gemini",
+    "ollama",
+    "langchain",
+    "snippets",
+    "code-rescue"
+  ],
+  "homepage": "https://urstack-ai.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apchow/urstack-snippets"
+  },
+  "icon": "icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/python.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets/javascript.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/typescript.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "urstack.analyzeError",
+        "title": "UrStack: Analyze Selected Error"
+      },
+      {
+        "command": "urstack.openDocs",
+        "title": "UrStack: Open AI Tool Directory"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "urstack.analyzeError",
+          "when": "editorHasSelection",
+          "group": "urstack"
+        }
+      ]
+    }
+  },
+  "license": "MIT"
+}

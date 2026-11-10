@@ -1,0 +1,57 @@
+{
+  "name": "urstack-envscan",
+  "version": "1.0.0",
+  "description": "Scan repos for leaked API keys, exposed .env files, insecure SSH configs, and IDE extension supply-chain risks. Free security scanner by UrStack AI.",
+  "main": "index.js",
+  "bin": {
+    "envscan": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "node bin/cli.js . --severity all",
+    "scan": "node bin/cli.js .",
+    "scan:json": "node bin/cli.js . --format json",
+    "scan:git": "node bin/cli.js . --git-history",
+    "scan:ide": "node bin/cli.js --ide",
+    "scan:ssh": "node bin/cli.js --ssh"
+  },
+  "keywords": [
+    "secret-scanner",
+    "env-file",
+    "api-key-leak",
+    "security-audit",
+    "git-secrets",
+    "dotenv-security",
+    "ssh-audit",
+    "supply-chain",
+    "ide-extension-audit",
+    "cursor-security",
+    "vscode-security",
+    "urstack",
+    "devsecops",
+    "env-file-scanner",
+    "api-key-leak-detector",
+    "secret-scanner-cli",
+    "git-secret-scanner",
+    "env-security-audit",
+    "ide-extension-security"
+  ],
+  "author": "UrStack AI <chowdharyapoorv26txg@gmail.com> (https://urstack-ai.vercel.app)",
+  "license": "MIT",
+  "homepage": "https://urstack-ai.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apchow/urstack-envscan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apchow/urstack-envscan/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "bin/",
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ]
+}

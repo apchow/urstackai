@@ -1,0 +1,54 @@
+{
+  "name": "urstack-stackpick",
+  "version": "1.0.0",
+  "description": "AI/LLM stack recommender — detect your hardware and get matched with the best local AI models you can run. Free CLI by UrStack AI.",
+  "main": "index.js",
+  "bin": {
+    "stackpick": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "node bin/cli.js scan",
+    "start": "node bin/cli.js"
+  },
+  "keywords": [
+    "ai-stack",
+    "llm-local",
+    "ollama",
+    "model-recommender",
+    "hardware-matching",
+    "gpu-vram",
+    "quantization",
+    "local-ai",
+    "urstack",
+    "ai-setup",
+    "vllm",
+    "llama",
+    "deepseek",
+    "mistral",
+    "qwen",
+    "local-llm",
+    "llm-hardware-requirements",
+    "ai-model-selector",
+    "ollama-models",
+    "local-ai-setup"
+  ],
+  "author": "UrStack AI <chowdharyapoorv26txg@gmail.com> (https://urstack-ai.vercel.app)",
+  "license": "MIT",
+  "homepage": "https://urstack-ai.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apchow/urstack-stackpick.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apchow/urstack-stackpick/issues"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "bin/",
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ]
+}

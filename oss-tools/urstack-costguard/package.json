@@ -1,0 +1,40 @@
+{
+  "name": "urstack-costguard",
+  "version": "1.0.0",
+  "description": "AI API cost monitor & circuit breaker — prevent runaway LLM bills. Set spend limits, track usage, auto-kill on budget. Free CLI by UrStack AI.",
+  "main": "index.js",
+  "bin": {
+    "costguard": "./bin/cli.js"
+  },
+  "keywords": [
+    "ai-cost",
+    "api-billing",
+    "circuit-breaker",
+    "cost-monitor",
+    "llm-cost",
+    "openai-billing",
+    "anthropic-cost",
+    "gemini-cost",
+    "spend-limit",
+    "token-tracking",
+    "urstack",
+    "budget-guard",
+    "api-cost-calculator"
+  ],
+  "author": "UrStack AI <chowdharyapoorv26txg@gmail.com> (https://urstack-ai.vercel.app)",
+  "license": "MIT",
+  "homepage": "https://urstack-ai.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apchow/urstack-costguard.git"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "bin/",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ]
+}
