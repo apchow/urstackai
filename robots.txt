@@ -1,0 +1,8 @@
+# UrStack AI — https://urstack-ai.vercel.app
+User-agent: *
+Allow: /
+
+# Serverless endpoints are not crawlable content
+Disallow: /api/
+
+Sitemap: https://urstack-ai.vercel.app/sitemap.xml
