@@ -3175,7 +3175,7 @@
                 <span class="faq-icon">+</span>
               </button>
               <div class="faq-answer">
-                You can reach founder Apoorv Chowdhary directly at <a href="mailto:chowdharyapoorv26txg@gmail.com" style="color:var(--accent); font-weight:600; text-decoration:underline;">chowdharyapoorv26txg@gmail.com</a>, use the <strong>Founder Help Desk</strong> in the left sidebar, or open an issue on GitHub at <a href="https://github.com/apchow/urstackai/issues" target="_blank" rel="noopener" style="color:var(--emerald); text-decoration:underline;">github.com/apchow/urstackai/issues</a>. Typical response time is within 2–6 business hours (IST).
+                You can reach founder Apoorv Chowdhary directly at <a href="mailto:chowdharyapoorv26txg@gmail.com" style="color:var(--accent); font-weight:600; text-decoration:underline;">chowdharyapoorv26txg@gmail.com</a>, use the <strong>Founder Help Desk</strong> in the left sidebar. Typical response time is within 2–6 business hours (IST).
               </div>
             </div>
           </div>
@@ -3194,7 +3194,6 @@
               <div style="font-weight:700; font-size:0.85rem; color:var(--text); margin-bottom:6px;">Customer Support & Direct Contact</div>
               <p style="font-size:0.8rem; color:var(--muted); line-height:1.6; margin:0;">
                 • Email Support: <a href="mailto:chowdharyapoorv26txg@gmail.com" style="color:var(--accent); font-weight:600; text-decoration:underline;">chowdharyapoorv26txg@gmail.com</a><br/>
-                • GitHub Issues: <a href="https://github.com/apchow/urstackai/issues" target="_blank" rel="noopener" style="color:var(--text-secondary); text-decoration:underline;">github.com/apchow/urstackai/issues</a><br/>
                 • Interactive Help: <a href="#help" onclick="openModal('founderHelpModal'); return false;" style="color:var(--emerald); text-decoration:underline;">Open Founder Help Desk →</a>
               </p>
             </div>
@@ -3348,24 +3347,21 @@
     <div class="modal">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
         <span class="badge" style="background:var(--emerald-soft); color:var(--emerald); border-color:rgba(16,185,129,0.35);">Direct Customer Support</span>
-        <span style="font-size:0.75rem; color:var(--muted); font-family:monospace;">chowdharyapoorv26txg@gmail.com</span>
+        <span style="font-size:0.72rem; color:var(--muted); font-family:monospace; max-width:58%; text-align:right; overflow-wrap:anywhere;">chowdharyapoorv26txg@gmail.com</span>
       </div>
       <h3>Customer Support & Founder Help Desk</h3>
       <p style="font-size:0.83rem; color:var(--muted); margin-bottom:14px;">
         Need help with an order, want to request a refund, or have a technical question? Email <a href="mailto:chowdharyapoorv26txg@gmail.com" style="color:var(--accent); text-decoration:underline;">chowdharyapoorv26txg@gmail.com</a> directly or send a message below:
       </p>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+      <div style="display:grid; grid-template-columns:1fr; gap:10px; margin-bottom:14px;">
         <a href="mailto:chowdharyapoorv26txg@gmail.com?subject=UrStack%20AI%20Support%20Request" class="btn" style="justify-content:center; gap:8px; font-size:0.8rem; text-decoration:none; padding:8px;">
           ✉ Email chowdharyapoorv26txg@gmail.com
-        </a>
-        <a href="https://github.com/apchow/urstackai/issues" class="btn btn-emerald" style="justify-content:center; gap:8px; font-size:0.8rem; text-decoration:none; padding:8px;" target="_blank" rel="noopener">
-          🐙 Open GitHub Support Issue
         </a>
       </div>
 
       <form id="founderHelpForm" onsubmit="handleFounderHelpSubmit(event)">
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:10px; margin-bottom:10px;">
           <div>
             <label style="font-size:0.76rem; color:var(--muted);">Your Name *</label>
             <input type="text" id="helpNameInput" placeholder="Your name" required style="margin-top:4px;" />
@@ -3378,11 +3374,11 @@
 
         <div style="margin-bottom:10px;">
           <label style="font-size:0.76rem; color:var(--muted);">Topic / Category *</label>
-          <select id="helpTopicSelect" style="margin-top:4px; width:100%; padding:8px 10px; border-radius:8px; background:rgba(255,255,255,0.04); border:1px solid var(--border); color:var(--text); font-size:0.83rem;">
-            <option value="Order Support or Refund Request">Order Support or Refund Request</option>
-            <option value="Workflow & Code Assistance">Workflow & Code Assistance</option>
-            <option value="Vibe-Code Bug / Error Traceback">Vibe-Code Bug / Error Traceback</option>
-            <option value="Sponsorship & Tool Partnership">Sponsorship & Tool Partnership</option>
+          <select id="helpTopicSelect" style="margin-top:4px; width:100%; padding:8px 10px; border-radius:8px; background:#151a26; border:1px solid var(--border); color:var(--text); font-size:0.83rem; color-scheme:dark;">
+            <option value="Order Support or Refund Request" style="background:#151a26; color:#e6edf3;">Order Support or Refund Request</option>
+            <option value="Workflow & Code Assistance" style="background:#151a26; color:#e6edf3;">Workflow & Code Assistance</option>
+            <option value="Vibe-Code Bug / Error Traceback" style="background:#151a26; color:#e6edf3;">Vibe-Code Bug / Error Traceback</option>
+            <option value="Sponsorship & Tool Partnership" style="background:#151a26; color:#e6edf3;">Sponsorship & Tool Partnership</option>
           </select>
         </div>
 
@@ -3502,20 +3498,14 @@
         <input type="hidden" id="payuInrInput" />
         <input type="hidden" id="payuSkuInput" />
 
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
-          <div>
-            <label style="font-size:0.76rem; color:var(--muted);">Full Name *</label>
-            <input type="text" id="custName" required style="margin-top:4px;" />
-          </div>
-          <div>
-            <label style="font-size:0.76rem; color:var(--muted);">Phone / WhatsApp *</label>
-            <input type="text" id="custPhone" pattern="[0-9+\-\s]{8,15}" required style="margin-top:4px;" />
-          </div>
+        <div style="margin-bottom:10px;">
+          <label style="font-size:0.76rem; color:var(--muted);">Delivery Email Address *</label>
+          <input type="email" id="custEmail" placeholder="you@example.com" required style="margin-top:4px;" />
         </div>
 
         <div style="margin-bottom:10px;">
-          <label style="font-size:0.76rem; color:var(--muted);">Delivery Email Address *</label>
-          <input type="email" id="custEmail" required style="margin-top:4px;" />
+          <label style="font-size:0.76rem; color:var(--muted);">Name (optional)</label>
+          <input type="text" id="custName" placeholder="Leave blank and we'll use your account name" style="margin-top:4px;" />
         </div>
 
         <div id="customIntakeFieldWrap" style="display:none; margin-bottom:12px;">
@@ -4177,8 +4167,18 @@ Post 2: A structured architectural comparison with a clean bullet list. Zero hyp
 1. Group by vendor and compute annualized spend.
 2. Flag duplicate tools, silent tier increases, or converted trials.
 3. Draft concise cancellation or refund request emails for each flagged vendor.`
-      }
-    ];;
+      },
+      {"id":"wf-openrouter-subagent-opencode23-llamacpp1-failover","title":"OpenRouter Mid-Generation Subagent + OpenCode 2.3 Background Subagents & llama.cpp 1.0 Outage Failover","category":"Claude Code & MCP","badge":"NEW · NOV 15","outcome":"Offloads mechanical subtasks mid-generation for 56% lower token cost & zero-downtime local llama-server failover","description":"Wires OpenRouter's new beta server tool ({\"type\": \"openrouter:subagent\"}) to delegate file extraction/summarization to deepseek-v4.1-flash-1017 mid-generation, configures OpenCode v2.3.0 non-blocking background subagents + Claude Code Projects parallel workers, and adds automatic failover to local llama.cpp v1.0.0 (llama-server + /v1/audio/speech) during Claude API outages.","packPrice":9,"prompt":"# 1. OpenRouter Mid-Generation Subagent Tool Config (openrouter_subagent_router.py)\nimport os, requests\n\nOPENROUTER_KEY = os.environ.get('OPENROUTER_API_KEY', 'sk-or-v1-...')\nLLAMA_CPP_FALLBACK = os.environ.get('LLAMA_SERVER_URL', 'http://127.0.0.1:8080/v1/chat/completions')\n\ndef run_with_midgen_subagent(task_prompt: str):\n    payload = {\n        'model': 'anthropic/claude-opus-5.5',\n        'tools': [{\n            'type': 'openrouter:subagent',\n            'subagent': {\n                'model': 'deepseek/deepseek-v4.1-flash-1017',\n                'temperature': 0.1,\n                'max_tool_calls': 4,\n                'instructions': 'Handle all mechanical file extraction, JSON parsing, and boilerplate formatting concisely. Return strict structured output to the outer reasoning model.'\n            }\n        }],\n        'messages': [{'role': 'user', 'content': task_prompt}]\n    }\n    try:\n        r = requests.post('https://openrouter.ai/api/v1/chat/completions', headers={'Authorization': f'Bearer {OPENROUTER_KEY}'}, json=payload, timeout=25)\n        r.raise_for_status()\n        return r.json()\n    except Exception as e:\n        print(f'[Failover] Cloud API error ({e}) -> Routing to local llama.cpp v1.0.0 llama-server')\n        return requests.post(LLAMA_CPP_FALLBACK, json={'model': 'local-gguf-v1', 'messages': payload['messages']}, timeout=30).json()\n\n# 2. OpenCode v2.3.0 + Claude Code v2.1.325 + Copilot CLI v1.0.112 Config (.opencode.json)\n# {\n#   \"subagents\": { \"backgroundByDefault\": true, \"reportOnIdle\": true },\n#   \"tui\": { \"foldToolActivity\": true, \"verbosity\": \"medium\" },\n#   \"experimental\": { \"mcp_events\": true },\n#   \"claudeCode\": { \"sandbox\": { \"autoAllowBashIfSandboxed\": true }, \"parallelWorkers\": true },\n#   \"copilotCli\": { \"maxAiCredits\": 50, \"preventRecursiveDynamicWorkflows\": true }\n# }\n\n# 3. Local llama.cpp v1.0.0 Hardened Server + /v1/audio/speech Launch\n# llama-server -m ./models/qwen3-coder-next-q4_k_m.gguf --port 8080 --ctx-size 32768 --tts-endpoint /v1/audio/speech"},
+      {"id":"wf-jev-typesafe-harness-inkling2-claude-code-mode","badge":"NOV 14","title":"TypeSafe Jev Micro-Decision Harness + Zero-Retention Inkling 2 Small / Claude Code Mode Launcher","category":"Claude Code & MCP","outcome":"Offloads 100+ agent-loop micro-decisions to Jev/Decisions APIs & cuts UI/vision coding costs by ~72%","description":"Combines TypeSafe Jev (ModelRouterMiddleware + AutoModeMiddleware) and OpenRouter percentile latency/price routing (:nitro / :floor / p90) with Ollama Cloud's zero-data-retention Inkling 2 Small launcher (ollama launch claude --model inkling-2-small:cloud, 83.8% ScreenSpot Pro) and Flowdeck's 3-stage Claude Code self-validation checklist.","packPrice":9,"prompt":"#!/usr/bin/env bash\n# UrStack AI Vault — TypeSafe Jev Harness + Inkling 2 Small Zero-Retention Claude Launcher\n# Pattern: TypeSafe Jev (Noul/Choice/Score + AutoModeMiddleware) + OpenRouter p90 Routing + Ollama Inkling 2 Small\nset -euo pipefail\nmkdir -p .urstack\n\necho \"[1/3] Writing OpenRouter p90 latency + price ceiling & Jev AutoMode guardrail config...\"\ncat << 'JSON' > .urstack/jev_openrouter_harness.json\n{\n  \"decision_layer\": {\n    \"engine\": \"typesafe/jev-latest\",\n    \"fallbacks\": [\"google/gemini-decision-1\", \"openai/gpt-6-luna-decisions\"],\n    \"guardrail\": \"AutoModeMiddleware (blocks unapproved delete/spend/network tools before execution)\"\n  },\n  \"openrouter_routing\": {\n    \"fast_worker\": \"meta/muse-ember-1.0:floor\",\n    \"vision_and_finance_agent\": \"ollama/inkling-2-small:cloud\",\n    \"planner_advisor\": \"google/gemini-4-carbon\",\n    \"provider_preferences\": {\n      \"preferred_max_latency\": { \"p90\": 2.5 },\n      \"sort\": \"price\"\n    }\n  }\n}\nJSON\n\necho \"[2/3] Generating Flowdeck 3-Stage Self-Validation Gate for Claude Code v2.1.323...\"\ncat << 'MD' > .urstack/flowdeck_self_validation_gate.md\n# Pre-Commit Self-Validation Checklist (Run Before Human Review)\n1. Syntax & Build Check: Enumerate any compiler, type, or import regressions.\n2. Integration & State Contract: Verify upstream callers and database row locks.\n3. Dependency & API Surface: Confirm no deprecated parameters (e.g., Fable 5.2 budget_tokens or Gemini 2.5 thinking_budget).\n4. Security & Taint Check: Confirm zero exposed keys or unmasked session-replay inputs.\n5. Verdict: Output explicit PASS or FAIL with exact line-level remediation.\nMD\n\necho \"[3/3] Launching Claude Code with Zero-Retention Inkling 2 Small (594B MoE, 83.8% ScreenSpot Pro)...\"\nif command -v ollama >/dev/null 2>&1; then\n  echo \"Run: ollama launch claude --model inkling-2-small:cloud\"\nfi\necho \"✅ Harness ready in .urstack/jev_openrouter_harness.json\""},
+      {"id":"wf-darktrace-claude-c2-guard-gemini-decisions-batcher","badge":"NEW · NOV 13","title":"Darktrace Claude Key/Memory-Store C2 Guard + Gemini Decisions API ($0.10/1M, $0 Output) 1,000-Question Batcher","category":"Security & QA","outcome":"Blocks stolen-key Claude Code Memory-Store C2 implants & cuts closed-set classification costs by ~5x","description":"Audits local systemd/launchd services, shell dotfiles, and running processes for rogue --dangerously-skip-permissions Claude Code daemons or unauthorized Memory Store / Files API exfiltration (Darktrace Nov 12 defense), and batches up to 1,000 closed-set triage questions into a single Google Gemini Decisions API call ($0.10/1M input, $0 output tokens).","packPrice":9,"prompt":"#!/usr/bin/env bash\n# UrStack AI Vault — Darktrace Claude Code C2 Implant Guard + Gemini Decisions API ($0 Output) Batcher\nset -euo pipefail\nmkdir -p .urstack\n\necho \"[1/2] Auditing processes & shell dotfiles for rogue Claude Code C2 implants (Darktrace Nov 12 defense)...\"\npython3 - << 'PY'\nimport os, re, json, subprocess\nreport = {\n    \"rogue_skip_permissions_procs\": [],\n    \"exposed_plaintext_ant_keys\": [],\n    \"recommendation\": \"Use OAuth login (claude login) instead of static ANTHROPIC_API_KEY; OAuth tokens cannot reach Claude Memory Stores.\"\n}\ntry:\n    ps_out = subprocess.check_output([\"ps\", \"aux\"], text=True, errors=\"ignore\")\n    for line in ps_out.splitlines():\n        if \"dangerously-skip-permissions\" in line and \"grep\" not in line:\n            report[\"rogue_skip_permissions_procs\"].append(line.strip())\nexcept Exception:\n    pass\n\nhome = os.path.expanduser(\"~\")\nfor rc in [\".bashrc\", \".zshrc\", \".profile\", \".bash_profile\", \".env\"]:\n    p = os.path.join(home, rc)\n    if os.path.isfile(p):\n        try:\n            txt = open(p, \"r\", encoding=\"utf-8\", errors=\"ignore\").read()\n            if re.search(r'sk-ant-[A-Za-z0-9\\-_]{15,}', txt):\n                report[\"exposed_plaintext_ant_keys\"].append(p)\n        except Exception:\n            pass\n\nwith open(\".urstack/darktrace_claude_guard.json\", \"w\") as f:\n    json.dump(report, f, indent=2)\nprint(\"Security check saved ->\", len(report[\"rogue_skip_permissions_procs\"]), \"rogue procs,\", len(report[\"exposed_plaintext_ant_keys\"]), \"dotfiles flagged.\")\nPY\n\necho \"[2/2] Generating Google Gemini Decisions API ($0.10/1M input, $0 output) 1,000-question batch payload...\"\ncat << 'JSON' > .urstack/gemini_decisions_batch.json\n{\n  \"model\": \"gemini-decision-1\",\n  \"pricing\": \"$0.10/1M input tokens, $0.00/1M output tokens (up to 1,000 closed-set questions)\",\n  \"input\": \"Customer ticket: Checkout modal threw 400 after upgrading model ID to claude-fable-5-2 with temperature=0.2 and tool_choice=any.\",\n  \"questions\": [\n    {\"id\": \"q1_is_fable_52_migration_bug\", \"options\": [\"yes\", \"no\"]},\n    {\"id\": \"q2_severity\", \"options\": [\"p0_blocker\", \"p1_high\", \"p2_normal\", \"p3_low\"]},\n    {\"id\": \"q3_route_to\", \"options\": [\"rescue_sprint_17_usd\", \"docs_faq\", \"billing_support\"]}\n  ]\n}\nJSON"},
+      {"id":"wf-memgit-claude-memory-sync-cost-per-task-router","badge":"NEW · NOV 12","title":"Memgit Cross-Machine Claude Memory Sync + Cost-Per-Task Budget Router (Fable 5.2 vs. Kimi K3.1 / GPT-6.1 Sol)","category":"Claude Code & MCP","outcome":"Syncs versioned Claude Code memory + AGENTS.md across machines & cuts $26.54 Fable 5.2 task bills to $1.27–$3.68","description":"Combines Memgit's November 11 versioned memory commit hook and Freebuff's AGENTS.md convention with Speakeasy-style per-session cost telemetry and Artificial Analysis's November 11 Cost-per-Task routing table—routing terminal jobs to Kimi K3.1 Pro ($3.68/task, 67% Terminal-Bench 4.0), routine refactors to GPT-6.1 Sol ($1.27/task), and reserving XML-structured Fable 5.2 ($26.54/task) for escalations.","packPrice":9,"prompt":"#!/usr/bin/env bash\n# UrStack AI Vault — Memgit Versioned Claude Memory Sync + AA Cost-Per-Task Router\nset -euo pipefail\nREPO_DIR=\"${1:-.}\"\nTASK_TYPE=\"${2:-terminal}\" # terminal | bulk_refactor | knowledge_brief | architecture_escalation\ncd \"$REPO_DIR\"\nmkdir -p .urstack .memgit\n\nif [ ! -f \"AGENTS.md\" ]; then\n  cat << 'EOF' > AGENTS.md\n# Project Agent Conventions (Read on Every Turn)\n- Run tests before committing; never edit generated build artifacts directly.\n- Git author must match project owner (chowdharyapoorv26txg@gmail.com) before pushing to Vercel Hobby.\n- Persist multi-turn task state to .urstack/state.json (Ai2 StateBench guard).\nEOF\nfi\n\npython3 - \"$TASK_TYPE\" << 'PY'\nimport sys, json\ntask = sys.argv[1]\nROUTES = {\n    \"terminal\": {\"model\": \"moonshot/kimi-k3.1-pro\", \"cost_per_task_usd\": 3.68, \"reason\": \"Leads Terminal-Bench 4.0 at 67% ($2/$10 per 1M)\"},\n    \"bulk_refactor\": {\"model\": \"openai/gpt-6.1-sol\", \"cost_per_task_usd\": 1.27, \"reason\": \"Lowest AA cost/task ($1.27, 20.2 min, Index 55)\"},\n    \"knowledge_brief\": {\"model\": \"anthropic/claude-sonnet-5-5\", \"cost_per_task_usd\": 10.02, \"reason\": \"Leads AA-Briefcase Elo (1816) & 64% Terminal-Bench 4.0\"},\n    \"architecture_escalation\": {\"model\": \"anthropic/claude-fable-5-2\", \"cost_per_task_usd\": 26.54, \"reason\": \"Leads Intelligence Index (65) & FrontierSWE v2 (69.9%)\"}\n}\nchoice = ROUTES.get(task, ROUTES[\"terminal\"])\nwith open(\".urstack/cost_router_decision.json\", \"w\") as f:\n    json.dump(choice, f, indent=2)\nprint(\"Routed\", task, \"->\", choice[\"model\"], f\"(${choice['cost_per_task_usd']}/task)\")\nPY"},
+      {"id":"wf-modern-web-guidance-astral-uv-ruff-gate","badge":"NEW · NOV 11","title":"Modern Web Guidance 1.0 Legacy-Scan + Astral (uv/Ruff/ty) Pre-Commit Gate","category":"Claude Code & MCP","outcome":"Boosts agent modern CSS/JS pass rate from 56% to 88% & runs sub-second Rust lint/type checks","description":"Combines Chrome/Edge/Firefox/MDN's November 10 Modern Web Guidance 1.0 skill (npx modern-web-guidance@latest) with OpenAI Codex's newly acquired Astral Rust toolchain (uv, Ruff, ty) to block legacy jQuery/XHR/float anti-patterns and enforce strict Python/JS formatting before any agent commit.","packPrice":9,"prompt":"#!/usr/bin/env bash\n# UrStack AI Vault — Modern Web Guidance 1.0 Legacy-Scan + Astral (uv/Ruff/ty) Gate\nset -euo pipefail\nREPO_DIR=\"${1:-.}\"\ncd \"$REPO_DIR\"\nmkdir -p .urstack\n\nif command -v npx >/dev/null 2>&1; then\n  npx --yes modern-web-guidance@latest install || true\n  npx --yes modern-web-guidance@latest legacy-scan > .urstack/modern_web_scan.txt || true\nfi\n\nif command -v uvx >/dev/null 2>&1; then\n  uvx ruff check .\n  uvx ty check . || true\nfi\necho \"Pre-commit Modern Web Guidance 1.0 + Astral gate passed!\" "},
+      {"id":"wf-fable52-advisor-muse-ember-worker-router","badge":"NEW · NOV 10","title":"Fable 5.2 Advisor + Muse Ember ($0.10/1M) Worker Router & HTTP 400 Migration Guard","category":"Claude Code & MCP","outcome":"Cuts multi-step agent execution token bills by ~78% & prevents Fable 5.2 HTTP 400 migration failures","description":"Implements the Advisor-Worker orchestration pattern from Anthropic's November 9 Claude Fable 5.2 release and Meta's Muse Ember ($0.10/1M input) launch: strips the 4 deprecated request fields that trigger HTTP 400 on claude-fable-5-2 (budget_tokens, forced tool_choice, assistant prefill, sampling params) and routes high-volume tool calls to Muse Ember while escalating hard architecture decisions to Fable 5.2.","packPrice":9,"prompt":"#!/usr/bin/env python3\n# UrStack AI Vault — Fable 5.2 Sanitizer & Muse Ember Worker Router\nimport json\n\nFORBIDDEN_FABLE_52_KEYS = {'temperature', 'top_p', 'top_k'}\n\ndef sanitize_fable_52_payload(payload: dict, z_dr_authorized: bool = False) -> dict:\n    p = dict(payload)\n    p['model'] = 'claude-fable-5-2'\n    p['effort'] = p.get('effort', 'high')\n    for k in FORBIDDEN_FABLE_52_KEYS:\n        p.pop(k, None)\n    if 'thinking' in p and isinstance(p['thinking'], dict):\n        p['thinking'].pop('budget_tokens', None)\n    if isinstance(p.get('tool_choice'), dict) and p['tool_choice'].get('type') in {'any', 'tool'}:\n        p['tool_choice'] = {'type': 'auto'}\n    if p.get('messages') and p['messages'][-1].get('role') == 'assistant':\n        p['messages'] = p['messages'][:-1]\n    if not z_dr_authorized:\n        p.pop('zero_data_retention', None)\n    return p\n\ndef route_task(step_type: str, payload: dict) -> dict:\n    if step_type in {'tool_call', 'extraction', 'doc_parse', 'subtask'}:\n        return {'provider': 'meta', 'model': 'muse-ember-1.0', 'messages': payload.get('messages', [])}\n    return sanitize_fable_52_payload(payload)"},
+      {"id":"wf-intent-lens-multi-model-router","badge":"NOV 2","title":"Pre-Execution Intent-Lens Gate & Watermark-Free Multi-Model Router","category":"Claude Code & MCP","outcome":"Prevents destructive multi-file overwrites & strips AI invisible unicode watermarks","description":"Validates file-mutation blast radius before any agent tool call executes and sanitizes invisible zero-width Unicode watermark characters from generated code and markdown deliverables.","packPrice":9,"prompt":"#!/usr/bin/env python3\n# Strip zero-width Unicode characters (U+200B, U+200C, U+200D, U+FEFF) from staged files\nimport sys, re\nfor fn in sys.argv[1:]:\n    txt = open(fn, encoding='utf-8').read()\n    clean = re.sub(r'[\\u200b\\u200c\\u200d\\ufeff]', '', txt)\n    open(fn, 'w', encoding='utf-8').write(clean)"},
+      {"id":"wf-monolith-decomposer-8k-sentinel","title":"Gemini & Claude Monolith Decomposer & 8k-Token Bypass Sentinel","category":"Claude Code & MCP","outcome":"Splits 3,000-line vibe-coded monoliths into modular components without breaking state","description":"Analyzes state dependencies inside oversized single-file React/Next.js/HTML apps and extracts clean, testable modules with zero broken imports.","packPrice":9,"prompt":"Map all shared state variables and event handlers in the target monolith, then extract one self-contained module at a time while verifying build and tests after each extraction."},
+      {"id":"wf-gemini25-deprecation-migrator","title":"Gemini 2.5 to Gemini 4 Carbon / 3.8 Flash Pipeline Migration Sentinel","category":"Claude Code & MCP","outcome":"Migrates legacy Gemini 2.5 SDK calls & thinking_budget parameters before the Dec 1 cutoff","description":"Upgrades deprecated `@google/generative-ai` and `thinking_budget` calls to the unified `@google/genai` SDK (`client.interactions.create`, `thinking_level`) for Gemini 4 Carbon and 3.8 Flash.","packPrice":9,"prompt":"Scan codebase for gemini-2.5-pro, gemini-2.5-flash, and thinking_budget. Upgrade to @google/genai SDK with model='gemini-4-carbon' or 'gemini-3.8-flash' and thinking_level."},
+      {"id":"wf-youtube-metadata-retention-hook","title":"YouTube Shorts & Long-Form Metadata, Retention Hook & Upload Pipeline","category":"Grok Bot & X Ops","outcome":"Generates high-CTR titles, 3-second retention hooks & YouTube Data API v3 JSON payloads","description":"Built for high-velocity creator channels (sports edits, AI story shorts, tech explainers): produces 5 A/B titles, a 0–3s visual/audio hook script, chapter timestamps, and 15 long-tail tags.","packPrice":3,"prompt":"Given the video topic: (1) Generate 5 high-CTR titles (<55 chars), (2) Write a 3-second opening hook script with visual/audio cues, and (3) Output a YouTube Data API v3 JSON payload with chapters and 15 tags."}
+    ];
 
     const initialTools = [
       {
@@ -5265,15 +5265,33 @@ let dirTools = [...initialTools, ...savedCustomTools];
       }
     }
 
+    // Resolve a display name without asking the buyer for one: signed-in account
+    // name first, then the email local-part ("jane.doe@x.com" -> "Jane Doe").
+    function deriveCustomerName(email) {
+      try {
+        const user = typeof getCurrentUser === "function" ? getCurrentUser() : null;
+        if (user && user.name && String(user.name).trim()) return String(user.name).trim();
+      } catch (err) {}
+      const local = String(email || "").split("@")[0] || "";
+      const words = local.replace(/[._-]+/g, " ").replace(/[0-9]+/g, " ").trim().split(/s+/).filter(Boolean);
+      if (!words.length) return "Customer";
+      return words.map(function (w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(" ").slice(0, 40);
+    }
+
     async function handlePayuCheckoutSubmit(e) {
       e.preventDefault();
       const itemName = document.getElementById("payuItemInput").value;
       const priceUsd = parseInt(document.getElementById("payuUsdInput").value, 10);
       const inr = PAYU_CONFIG.inrPriceMap[priceUsd] || parseInt(document.getElementById("payuInrInput").value, 10);
       const sku = document.getElementById("payuSkuInput").value;
-      const name = document.getElementById("custName").value.trim();
       const email = document.getElementById("custEmail").value.trim();
-      const phone = document.getElementById("custPhone").value.trim();
+      if (!email) {
+        showToast("Please enter the email address where we should deliver your files.");
+        return;
+      }
+      const typedName = document.getElementById("custName") ? document.getElementById("custName").value.trim() : "";
+      const name = typedName || deriveCustomerName(email);
+      const phone = "";
       const extraUrl = document.getElementById("custExtraUrl").value.trim();
       const txnid = "UR-" + Math.random().toString(36).substring(2, 9).toUpperCase();
       const couponCode = (document.getElementById("custCouponCode") ? document.getElementById("custCouponCode").value : "").trim().toUpperCase();
@@ -6393,27 +6411,89 @@ if __name__ == "__main__":
       }
     }
 
-    function handleGoogleSignIn() {
-      const email = prompt("Sign in with Google - Enter your Google email:", "developer@gmail.com");
-      if (!email || !email.includes("@")) return;
-      const cleanEmail = email.trim().toLowerCase();
-      const name = cleanEmail.split("@")[0].replace(/[._]/g, " ").replace(/\b\w/g, l => l.toUpperCase());
-      const user = { email: cleanEmail, name, provider: "google", loggedInAt: new Date().toISOString() };
-      setCurrentUser(user);
+    let googleClientId = "";
+    let googleScriptPromise = null;
 
-      subscribeToNewsletter(cleanEmail, name);
-      dispatchNotification({
-        type: "signup",
-        name,
-        email: cleanEmail,
-        provider: "google",
-        timestamp: new Date().toISOString()
+    async function loadGoogleClientId() {
+      if (googleClientId) return googleClientId;
+      try {
+        const r = await fetch("/api/auth-config", { cache: "no-store" });
+        const j = await r.json();
+        googleClientId = j.clientId || "";
+      } catch (e) { googleClientId = ""; }
+      return googleClientId;
+    }
+
+    function loadGoogleScript() {
+      if (window.google && window.google.accounts) return Promise.resolve(true);
+      if (googleScriptPromise) return googleScriptPromise;
+      googleScriptPromise = new Promise(function (resolve) {
+        const el = document.createElement("script");
+        el.src = "https://accounts.google.com/gsi/client";
+        el.async = true;
+        el.defer = true;
+        el.onload = function () { resolve(Boolean(window.google && window.google.accounts)); };
+        el.onerror = function () { resolve(false); };
+        document.head.appendChild(el);
       });
+      return googleScriptPromise;
+    }
 
-      closeModal("authModal");
-      showToast(`Signed in with Google as ${cleanEmail}! Welcome email sent & subscribed to Daily Brief.`);
-      renderSavedPurchases();
-      openModal("savedPurchasesModal");
+    async function handleGoogleCredential(response) {
+      if (!response || !response.credential) return;
+      try {
+        const r = await fetch("/api/auth-google", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ credential: response.credential })
+        });
+        const j = await r.json();
+        if (!r.ok || !j.user) {
+          showToast("Google sign-in failed: " + (j.message || j.error || "unknown error"));
+          return;
+        }
+        setCurrentUser(j.user);
+        subscribeToNewsletter(j.user.email, j.user.name || j.user.email);
+        try {
+          dispatchNotification({ type: "signup", name: j.user.name || j.user.email, email: j.user.email, provider: "google", timestamp: new Date().toISOString() });
+        } catch (e) {}
+        closeModal("authModal");
+        showToast("Signed in as " + j.user.email);
+        renderSavedPurchases();
+        openModal("savedPurchasesModal");
+      } catch (err) {
+        showToast("Google sign-in failed. Please try again.");
+      }
+    }
+
+    async function handleGoogleSignIn() {
+      const clientId = await loadGoogleClientId();
+      if (!clientId) {
+        showToast("Google sign-in is not switched on yet. Use your email and password below.");
+        return;
+      }
+      const ready = await loadGoogleScript();
+      if (!ready) { showToast("Could not reach Google. Check your connection and retry."); return; }
+      google.accounts.id.initialize({
+        client_id: clientId,
+        callback: handleGoogleCredential,
+        auto_select: false,
+        ux_mode: "popup"
+      });
+      google.accounts.id.prompt(function (notification) {
+        if (notification && notification.isNotDisplayed && notification.isNotDisplayed()) {
+          showToast("Google sign-in popup was blocked. Allow popups for this site and retry.");
+        }
+      });
+    }
+
+    // Trust the signed session cookie over localStorage when it is present.
+    async function hydrateSession() {
+      try {
+        const r = await fetch("/api/auth-me", { cache: "no-store" });
+        const j = await r.json();
+        if (j && j.user) setCurrentUser(j.user);
+      } catch (e) {}
     }
 
     async function handleFounderHelpSubmit(e) {
@@ -6441,7 +6521,7 @@ if __name__ == "__main__":
 
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = "⚡ Send Message Directly";
+        submitBtn.textContent = "⚡ Send Support Message";
       }
 
       closeModal("founderHelpModal");
@@ -6721,6 +6801,7 @@ if __name__ == "__main__":
     }
 
     function handleSignOut() {
+      fetch("/api/auth-logout", { method: "POST" }).catch(function () {});
       setCurrentUser(null);
       closeModal("savedPurchasesModal");
       showToast("Signed out successfully.");
@@ -7255,6 +7336,7 @@ Every tool call and code edit must produce an AST-validated diff, pass regressio
 
     renderWorkflows();
     renderDir();
+    hydrateSession();
   </script>
 </body>
 </html>
