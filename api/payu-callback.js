@@ -23,10 +23,11 @@ module.exports = async (req, res) => {
 
       const merchantKey = process.env.PAYU_MERCHANT_KEY || "";
       const merchantSalt = process.env.PAYU_MERCHANT_SALT || "";
-      const actionUrl = process.env.PAYU_ACTION_URL || "https://secure.payu.in/_payment";
+      const actionUrl = process.env.PAYU_ACTION_URL || (process.env.PAYU_ENV === "test" ? "https://test.payu.in/_payment" : "https://secure.payu.in/_payment");
 
       if (!merchantKey || !merchantSalt) {
-        return res.status(200).json({
+        return res.status(503).json({
+          error: "missing_server_credentials",
           status: "missing_server_credentials",
           message: "Set PAYU_MERCHANT_KEY and PAYU_MERCHANT_SALT in Vercel Environment Variables to enable live gateway signing."
         });
@@ -36,7 +37,9 @@ module.exports = async (req, res) => {
       const amountFormatted = `${canonicalInr}.00`;
       const udf1 = sku || "workflow";
       const udf2 = extraUrl || "";
-      const hashSequence = `${merchantKey}|${txnid}|${amountFormatted}|${itemName}|${name}|${email}|${udf1}|${udf2}|||||||||${merchantSalt}`;
+      // PayU request hash order: key|txnid|amount|productinfo|firstname|email|udf1..udf10|salt
+      const hashSequence = [merchantKey, txnid, amountFormatted, itemName, name, email,
+        udf1, udf2, "", "", "", "", "", "", "", "", merchantSalt].join("|");
       const sha512Hash = crypto.createHash("sha512").update(hashSequence, "utf8").digest("hex");
       const callbackUrl = `${origin.replace(/\/$/, "")}/api/payu-callback`;
 
@@ -82,7 +85,15 @@ module.exports = async (req, res) => {
 
     const merchantSalt = process.env.PAYU_MERCHANT_SALT || "";
     if (merchantSalt && postedHash) {
-      const baseReverseSeq = `${merchantSalt}|${params.get("status") || "success"}||||||${udf5}|${udf4}|${udf3}|${udf2}|${udf1}|${email}|${firstname}|${productinfo}|${amount}|${txnid}|${key}`;
+      // PayU reverse hash order: salt|status|udf10..udf1|email|firstname|productinfo|amount|txnid|key
+      const revUdFs = [
+        params.get("udf10") || "", params.get("udf9") || "", params.get("udf8") || "",
+        params.get("udf7") || "", params.get("udf6") || "", udf5, udf4, udf3, udf2, udf1
+      ];
+      const baseReverseSeq = [merchantSalt, params.get("status") || "success"]
+        .concat(revUdFs)
+        .concat([email, firstname, productinfo, amount, txnid, key])
+        .join("|");
       const fullReverseSeq = additionalCharges ? `${additionalCharges}|${baseReverseSeq}` : baseReverseSeq;
       const expectedHash = crypto.createHash("sha512").update(fullReverseSeq, "utf8").digest("hex").toLowerCase();
       if (expectedHash !== postedHash) {

@@ -5122,7 +5122,7 @@ let dirTools = [...initialTools, ...savedCustomTools];
     // =========================================================================
     // PAYU INDIA CONFIGURATION & SERVER-SIGNED FULFILLMENT ENGINE
     // Security Policy: Merchant salts and SHA-512 signing live strictly
-    // server-side in /.netlify/functions/payu-initiate (never in client code).
+    // server-side in /api/payu-initiate (never in client code).
     // =========================================================================
     const PAYU_CONFIG = {
       // Modes: "server_signed" (signs via /.netlify/functions/payu-initiate) or "payment_links" (only when all links are configured)
@@ -5342,13 +5342,13 @@ let dirTools = [...initialTools, ...savedCustomTools];
         return;
       }
 
-      // If server-side PAYU_MERCHANT_KEY / PAYU_MERCHANT_SALT env vars are not yet set in Netlify dashboard,
+      // If server-side PAYU_MERCHANT_KEY / PAYU_MERCHANT_SALT env vars are not set in Vercel,
       // display a clear status message and let the user contact support or use evaluation code 2026
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.textContent = `Pay ₹${inr.toLocaleString("en-IN")} via PayU →`;
       }
-      showToast("Live gateway awaits server-side PAYU_MERCHANT_SALT in Netlify env vars. Enter promo code 2026 for instant access or email chowdharyapoorv26txg@gmail.com.");
+      showToast("Card/UPI checkout is not switched on yet (server-side PAYU_MERCHANT_KEY / PAYU_MERCHANT_SALT missing). Enter promo code 2026 for instant access or email chowdharyapoorv26txg@gmail.com to pay directly.");
     }
 
     function triggerInstantFulfillment(sku, itemName, txnid, name, email, extraUrl) {
