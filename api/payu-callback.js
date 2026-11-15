@@ -84,6 +84,11 @@ module.exports = async (req, res) => {
     }
 
     const merchantSalt = process.env.PAYU_MERCHANT_SALT || "";
+    if (!merchantSalt || !postedHash) {
+      // Fail closed: an unverifiable callback must never be fulfilled.
+      res.setHeader("Cache-Control", "no-cache");
+      return res.redirect(303, `/?payment_failed=1&reason=verification_unavailable&txnid=${encodeURIComponent(txnid)}`);
+    }
     if (merchantSalt && postedHash) {
       // PayU reverse hash order: salt|status|udf10..udf1|email|firstname|productinfo|amount|txnid|key
       const revUdFs = [
