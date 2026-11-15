@@ -1,14 +1,13 @@
-// TEMPORARY diagnostic - reports only presence/length of payment env vars, never values.
+// TEMPORARY diagnostic - presence/lengths only, never values.
 module.exports = (req, res) => {
-  const k = process.env.PAYU_MERCHANT_KEY;
-  const s = process.env.PAYU_MERCHANT_SALT;
+  const names = Object.keys(process.env).filter((n) => /PAYU|DEPLOY_MARKER/.test(n)).sort();
   res.setHeader("Cache-Control", "no-store");
   return res.status(200).json({
     vercelEnv: process.env.VERCEL_ENV || null,
-    keyPresent: typeof k === "string" && k.length > 0,
-    keyLength: k ? k.length : 0,
-    saltPresent: typeof s === "string" && s.length > 0,
-    saltLength: s ? s.length : 0,
-    payuVarNames: Object.keys(process.env).filter((n) => n.startsWith("PAYU")).sort()
+    deploymentUrl: process.env.VERCEL_URL || null,
+    marker: process.env.DEPLOY_MARKER || null,
+    payuVars: names,
+    keyLength: (process.env.PAYU_MERCHANT_KEY || "").length,
+    saltLength: (process.env.PAYU_MERCHANT_SALT || "").length
   });
 };
