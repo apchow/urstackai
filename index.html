@@ -3270,8 +3270,9 @@
         Log in or create an account to save your workflow purchases, licenses, and PDF solution packs across devices:
       </p>
 
-      <!-- Google Sign In Option -->
-      <button type="button" class="btn" style="width:100%; justify-content:center; gap:10px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18); font-weight:600; padding:10px; margin-bottom:14px;" onclick="handleGoogleSignIn()">
+      <!-- Google Sign In Option: official GIS button renders here when a client ID exists -->
+      <div id="googleBtnSlot" style="display:none; justify-content:center; margin-bottom:14px;"></div>
+      <button type="button" id="googleFallbackBtn" class="btn" style="width:100%; justify-content:center; gap:10px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.18); font-weight:600; padding:10px; margin-bottom:14px;" onclick="handleGoogleSignIn()">
         <svg width="18" height="18" viewBox="0 0 24 24">
           <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
           <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -6466,6 +6467,45 @@ if __name__ == "__main__":
       }
     }
 
+    let googleInitDone = false;
+
+    // Renders Google's own button, which works even where the One Tap prompt is
+    // suppressed by FedCM. Falls back to our styled button when unconfigured.
+    async function initGoogleButton() {
+      const clientId = await loadGoogleClientId();
+      const slot = document.getElementById("googleBtnSlot");
+      const fallback = document.getElementById("googleFallbackBtn");
+      if (!clientId) {
+        if (slot) slot.style.display = "none";
+        if (fallback) fallback.style.display = "";
+        return;
+      }
+      const ready = await loadGoogleScript();
+      if (!ready) return;
+      if (!googleInitDone) {
+        google.accounts.id.initialize({
+          client_id: clientId,
+          callback: handleGoogleCredential,
+          ux_mode: "popup",
+          auto_select: false
+        });
+        googleInitDone = true;
+      }
+      if (slot) {
+        slot.innerHTML = "";
+        slot.style.display = "flex";
+        google.accounts.id.renderButton(slot, {
+          theme: "filled_black",
+          size: "large",
+          shape: "pill",
+          text: "continue_with",
+          logo_alignment: "left",
+          width: 300
+        });
+      }
+      if (fallback) fallback.style.display = "none";
+    }
+
     async function handleGoogleSignIn() {
       const clientId = await loadGoogleClientId();
       if (!clientId) {
@@ -6474,12 +6514,15 @@ if __name__ == "__main__":
       }
       const ready = await loadGoogleScript();
       if (!ready) { showToast("Could not reach Google. Check your connection and retry."); return; }
-      google.accounts.id.initialize({
-        client_id: clientId,
-        callback: handleGoogleCredential,
-        auto_select: false,
-        ux_mode: "popup"
-      });
+      if (!googleInitDone) {
+        google.accounts.id.initialize({
+          client_id: clientId,
+          callback: handleGoogleCredential,
+          auto_select: false,
+          ux_mode: "popup"
+        });
+        googleInitDone = true;
+      }
       google.accounts.id.prompt(function (notification) {
         if (notification && notification.isNotDisplayed && notification.isNotDisplayed()) {
           showToast("Google sign-in popup was blocked. Allow popups for this site and retry.");
@@ -6814,6 +6857,7 @@ if __name__ == "__main__":
         openModal("savedPurchasesModal");
       } else {
         openModal("authModal");
+        try { initGoogleButton(); } catch (e) {}
       }
     }
 
@@ -7337,6 +7381,7 @@ Every tool call and code edit must produce an AST-validated diff, pass regressio
     renderWorkflows();
     renderDir();
     hydrateSession();
+    initGoogleButton();
   </script>
 </body>
 </html>
