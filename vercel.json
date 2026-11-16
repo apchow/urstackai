@@ -3,6 +3,10 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/guard",
+      "destination": "/index.html"
+    },
+    {
       "source": "/api/payu-initiate",
       "destination": "/api/payu-callback"
     },

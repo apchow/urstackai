@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UrStack AI — Developer Suite & Intelligence Index</title>
-  <meta name="description" content="UrStack AI: Production agent workflows, automated code diagnostics, hardware-matched local AI architecture, and curated 2026 intelligence directory." />
+  <title>UrStack — Stop company data leaking into AI tools</title>
+  <meta name="description" content="UrStack Guard detects, redacts and blocks sensitive data at the paste — locally, before it reaches ChatGPT, Claude or Gemini. No raw prompts stored, metadata-only audit. Plus 38 free agent playbooks." />
     <link rel="canonical" href="https://urstack-ai.vercel.app/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="UrStack AI" />
-    <meta property="og:title" content="UrStack AI — Developer Suite &amp; Intelligence Index" />
-    <meta property="og:description" content="Production agent workflows, automated code diagnostics, hardware-matched local AI architecture, and a curated 2026 intelligence directory of 76 evaluated AI tools." />
+    <meta property="og:title" content="UrStack — Stop company data leaking into AI tools" />
+    <meta property="og:description" content="Guardrails for vibecoders: paste-level detection, redaction and metadata-only audit, local-first. Free agent playbooks underneath." />
     <meta property="og:url" content="https://urstack-ai.vercel.app/" />
     <meta property="og:image" content="https://urstack-ai.vercel.app/og-image.png" />
     <meta property="og:image:width" content="1792" />
     <meta property="og:image:height" content="1024" />
-    <meta property="og:image:alt" content="UrStack AI — agent workflows, code rescue and the 2026 AI tool index" />
+    <meta property="og:image:alt" content="UrStack Guard — stop company data leaking into AI tools, plus free agent playbooks" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="UrStack AI — Developer Suite &amp; Intelligence Index" />
-    <meta name="twitter:description" content="Production agent workflows, automated code diagnostics, hardware-matched local AI architecture, and a curated 2026 intelligence directory of 76 evaluated AI tools." />
+    <meta name="twitter:title" content="UrStack — Stop company data leaking into AI tools" />
+    <meta name="twitter:description" content="Paste-level detection, redaction and metadata-only audit — local-first. Plus 38 free agent playbooks." />
     <meta name="twitter:image" content="https://urstack-ai.vercel.app/og-image.png" />
     <script type="application/ld+json">
 {
@@ -29,7 +29,7 @@
       "name": "UrStack AI",
       "url": "https://urstack-ai.vercel.app/",
       "logo": "https://urstack-ai.vercel.app/og-image.png",
-      "description": "Production agent workflows, automated code diagnostics, hardware-matched local AI architecture, and a curated 2026 intelligence directory of 76 evaluated AI tools.",
+      "description": "UrStack Guard stops company data leaking into AI tools: local-first paste detection, redaction and metadata-only audit. Free agent playbooks sit underneath.",
       "founder": {
         "@type": "Person",
         "name": "Apoorv Chowdhary"
@@ -1104,6 +1104,63 @@
       display: block;
     }
 
+    /* ===== UrStack Guard pivot ===== */
+    :root { --guard: #22d3ee; --guard-soft: rgba(34,211,238,0.10); --guard-border: rgba(34,211,238,0.30); }
+    .guard-banner {
+      position: relative;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 8px 40px 8px 20px; font-size: 0.78rem; color: #d7f7fd;
+      background: linear-gradient(90deg, rgba(8,145,178,0.24), rgba(13,148,136,0.18), rgba(8,145,178,0.24));
+      border-bottom: 1px solid var(--guard-border);
+    }
+    .guard-banner .desc { color: #b6cdd8; }
+    @media (max-width: 1080px) { .guard-banner .desc { display: none; } }
+    .guard-banner strong { color: #a5f3fc; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.7rem; }
+    .guard-banner a { color: #67e8f9; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+    .guard-banner-x { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #8b9bb4; cursor: pointer; font-size: 0.85rem; line-height: 1; }
+    .guard-banner-x:hover { color: #e2e8f0; }
+    .guard-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--guard); box-shadow: 0 0 0 3px rgba(34,211,238,0.18); flex-shrink: 0; }
+    .guard-hero { background: radial-gradient(900px 320px at 10% -20%, rgba(34,211,238,0.16), transparent 62%), linear-gradient(135deg, rgba(17,24,39,0.92), rgba(7,9,14,0.96)); border: 1px solid var(--guard-border); }
+    .guard-eyebrow { color: #67e8f9 !important; }
+    .guard-h1 { font-size: 2.05rem; line-height: 1.13; letter-spacing: -0.03em; font-weight: 800; margin-bottom: 10px; }
+    .guard-grad { background: linear-gradient(92deg, #67e8f9, #22d3ee 45%, #34d399); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .guard-sub { font-size: 0.94rem; color: var(--text-secondary); max-width: 54ch; }
+    .guard-invariants { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0 16px; }
+    .guard-chip { font-size: 0.72rem; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--guard-border); background: var(--guard-soft); color: #a5f3fc; display: inline-flex; align-items: center; gap: 6px; }
+    .guard-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+    .btn-guard { background: linear-gradient(135deg, #22d3ee, #0ea5e9); color: #04121a !important; border: none; font-weight: 700; }
+    .btn-guard:hover { filter: brightness(1.08); }
+    .paste-mock { background: #06090f; border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; overflow: hidden; font-size: 0.76rem; }
+    .paste-mock-bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); color: var(--muted); font-size: 0.68rem; }
+    .paste-mock-bar .pdot { width: 8px; height: 8px; border-radius: 50%; background: #334155; }
+    .paste-mock-body { padding: 12px 14px; font-family: "JetBrains Mono", "Fira Code", monospace; line-height: 1.9; color: #cbd5e1; }
+    .paste-mock-body .ln { display: block; }
+    .hl-key { background: rgba(248,113,113,0.16); border: 1px solid rgba(248,113,113,0.42); border-radius: 4px; padding: 1px 4px; color: #fca5a5; text-decoration: line-through; }
+    .hl-mail { background: rgba(251,191,36,0.14); border: 1px solid rgba(251,191,36,0.36); border-radius: 4px; padding: 1px 4px; color: #fcd34d; text-decoration: line-through; }
+    .ph { color: #67e8f9; }
+    .paste-mock-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; border-top: 1px solid rgba(255,255,255,0.07); background: rgba(16,185,129,0.05); }
+    .tag-block { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.07em; color: #fca5a5; border: 1px solid rgba(248,113,113,0.5); background: rgba(248,113,113,0.12); padding: 2px 6px; border-radius: 5px; }
+    .tag-ok { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.06em; color: #6ee7b7; border: 1px solid rgba(16,185,129,0.42); background: rgba(16,185,129,0.12); padding: 2px 6px; border-radius: 5px; }
+    .playbook-anchor { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 4px 0 16px; padding: 16px 18px; border: 1px solid var(--border); border-radius: 12px; background: linear-gradient(135deg, rgba(20,25,39,0.72), rgba(10,13,20,0.9)); }
+    .guard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 14px; }
+    .guard-card { padding: 18px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); }
+    .guard-card h4 { font-size: 0.93rem; margin-bottom: 6px; }
+    .guard-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    .guard-step { font-size: 0.66rem; font-weight: 800; letter-spacing: 0.1em; color: #67e8f9; display: inline-block; margin-bottom: 6px; }
+    .layer-stack { display: grid; gap: 10px; }
+    .layer { display: grid; grid-template-columns: 158px 1fr; gap: 14px; align-items: start; padding: 14px 16px; border-radius: 11px; border: 1px solid var(--border); background: rgba(12,16,24,0.72); }
+    .layer strong { font-size: 0.86rem; }
+    .layer small { color: var(--muted); font-size: 0.78rem; line-height: 1.6; display: block; }
+    .policy-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .policy-table th, .policy-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+    .policy-table th { color: var(--muted); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .act-block { color: #fca5a5; font-weight: 600; }
+    .act-redact { color: #fcd34d; font-weight: 600; }
+    .act-warn { color: #93c5fd; font-weight: 600; }
+    .act-allow { color: #6ee7b7; font-weight: 600; }
+    .nav-new { margin-left: auto; font-size: 0.56rem; font-weight: 800; letter-spacing: 0.08em; color: #04121a; background: var(--guard); padding: 2px 6px; border-radius: 5px; }
+    @media (max-width: 720px) { .layer { grid-template-columns: 1fr; } .guard-h1 { font-size: 1.55rem; } }
+
   </style>
 </head>
 <body>
@@ -1114,7 +1171,7 @@
     <!-- =============================================================== -->
     <aside class="sidebar" id="sidebar">
       <div class="brand-row">
-        <div class="brand" onclick="navigate('workflowsPage', 'Workflow Vault')">
+        <div class="brand" onclick="navigate('workflowsPage', 'Playbooks')">
           <div class="logo-svg-wrap">
             <!-- Custom Isometric Layered Stack + Spark Vector Logo -->
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1150,13 +1207,24 @@
           <span class="group-caret">▾</span>
         </button>
         <div class="nav-group-items">
-          <button class="nav-item active" id="nav-workflowsPage" onclick="navigate('workflowsPage', 'Workflow Vault')">
+          <button class="nav-item active" id="nav-guardPage" onclick="navigate('guardPage', 'UrStack Guard')">
+            <span class="nav-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </span>
+            <span>UrStack Guard</span>
+            <span class="nav-new">FREE</span>
+          </button>
+
+          <button class="nav-item" id="nav-workflowsPage" onclick="navigate('workflowsPage', 'Playbooks')">
             <span class="nav-icon-box">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
               </svg>
             </span>
-            <span>Workflow Vault</span>
+            <span>Playbooks</span>
           </button>
 
           <button class="nav-item" id="nav-debuggerPage" onclick="navigate('debuggerPage', 'Code Rescue')">
@@ -1253,6 +1321,15 @@
     <!-- MAIN AREA                                                       -->
     <!-- =============================================================== -->
     <div class="main-area">
+      <!-- Pivot banner: sits inside the main column so it never crosses the fixed sidebar -->
+      <div class="guard-banner" id="guardBanner">
+        <span class="guard-dot"></span>
+        <strong>UrStack Guard</strong>
+        <span class="desc">Local-first · no raw prompts stored · metadata-only audit</span>
+        <a href="/guard" onclick="return goGuard(event)">Free &amp; Enterprise →</a>
+        <button class="guard-banner-x" onclick="dismissGuardBanner()" aria-label="Dismiss announcement">✕</button>
+      </div>
+
       <!-- Sleek Topbar -->
       <header class="topbar">
         <div class="topbar-left">
@@ -1260,7 +1337,7 @@
           <div class="breadcrumb">
             <span>UrStack AI</span>
             <span>/</span>
-            <strong id="topbarCurrentTitle">Workflow Vault</strong>
+            <strong id="topbarCurrentTitle">UrStack Guard</strong>
           </div>
         </div>
         <div class="topbar-actions" id="topbarActions">
@@ -1274,25 +1351,218 @@
 
       <div class="content-wrap">
         <!-- =========================================================== -->
-        <!-- VIEW 1: WORKFLOW VAULT                                      -->
+        <!-- VIEW 0: URSTACK GUARD (product surface)                     -->
         <!-- =========================================================== -->
-        <section id="workflowsPage" class="page-view active">
-          <div class="section-hero">
+        <section id="guardPage" class="page-view active">
+          <div class="section-hero guard-hero">
             <div>
-              <div class="eyebrow">Production Agent Playbooks</div>
-              <h2>Verified AI Agent Workflows & <code>SKILL.md</code> Architectures</h2>
-              <p>Copy-paste tested system prompts for Claude Code, Grok, n8n, and local Ollama pipelines for free—or download complete implementation bundles with Python scripts and webhook configs.</p>
-              <div class="metrics-bar">
-                <div><strong>Free</strong> Open Prompts</div>
-                <div><strong>Ready-to-Run</strong> Code Bundles</div>
-                <div><strong>Daily</strong> Verified Additions</div>
+              <div class="eyebrow guard-eyebrow">◆ UrStack Guard · Free &amp; Enterprise</div>
+              <h2 class="guard-h1">Safety is a <span class="guard-grad">property of the moment</span>, not a destination.</h2>
+              <p class="guard-sub">Companies write a policy and file it, run a training and forget it, schedule an audit and wait. All three live far from the second someone pastes a customer list, an API key or unreleased code into a prompt. Guard closes that distance at the paste — locally, in the browser, before the model sees anything.</p>
+              <div class="guard-invariants">
+                <span class="guard-chip">🔒 Local-first detection</span>
+                <span class="guard-chip">🚫 No raw prompts stored</span>
+                <span class="guard-chip">🧾 Metadata-only audit</span>
+                <span class="guard-chip">🛠 Coach, don't cop</span>
               </div>
+              <div class="guard-cta">
+                <a class="btn btn-guard" href="https://github.com/apchow/urstackai" target="_blank" rel="noopener">Get the free version →</a>
+                <button class="btn" onclick="openGuardSupport()">Enterprise · talk to us</button>
+              </div>
+              <div style="font-size:0.74rem; color:var(--muted); margin-top:8px;">Free forever for individual use — local detection, no account, no email, no telemetry. Enterprise adds shared policy, SSO and audit export.</div>
             </div>
             <div class="hero-card">
-              <h3>Complete Workflow Vault Access</h3>
-              <p>Unlock all 50+ downloadable Python automation scripts, n8n JSON blueprints, and GyanSutr RAG personas with lifetime updates.</p>
-              <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="openCheckout('UrStack All-Access Workflow Vault Pass', 29)">Get Full Vault Pass ($29 / ₹2,449) →</button>
+              <h3>What Guard refuses to do</h3>
+              <ul class="tier-list" style="margin-top:8px;">
+                <li>Store your prompts, pastes or files</li>
+                <li>Send content to a UrStack server</li>
+                <li>Block by default and hope you comply</li>
+                <li>Compete on "most threats caught"</li>
+              </ul>
+              <p style="font-size:0.76rem; color:var(--muted); margin-top:10px;">We compete on governed productivity — the safe way has to also be the fast way, or nobody uses it.</p>
             </div>
+          </div>
+
+          <div style="margin:26px 0 12px;">
+            <div class="eyebrow">The core loop</div>
+            <h3 style="font-size:1.1rem;">Detect → decide → rewrite → log, in the browser</h3>
+          </div>
+          <div class="guard-grid" style="margin-bottom:24px;">
+            <div class="guard-card">
+              <span class="guard-step">01 · DETECT</span>
+              <h4>Typed spans, not vibes</h4>
+              <p>Exact rules (AWS, GitHub PAT, JWT, PEM, Stripe), checksum validators (PAN/Luhn, Aadhaar/Verhoeff, IBAN), then a Shannon-entropy sweep for unknown secrets. Every finding carries a category, severity and confidence.</p>
+            </div>
+            <div class="guard-card">
+              <span class="guard-step">02 · DECIDE</span>
+              <h4>Policy-as-code</h4>
+              <p>A versioned JSON policy maps each category to allow, warn, redact or block — with per-domain overrides and allowlists. Reviewable in a pull request, diffable, exportable.</p>
+            </div>
+            <div class="guard-card">
+              <span class="guard-step">03 · REWRITE</span>
+              <h4>Keep the user moving</h4>
+              <p>Sensitive spans become typed placeholders like <span class="ph">&lt;EMAIL_1&gt;</span> so the prompt still works. The token map is session-only, held per tab, and never serialized.</p>
+            </div>
+            <div class="guard-card">
+              <span class="guard-step">04 · LOG</span>
+              <h4>Evidence, not content</h4>
+              <p>The audit record stores event id, tool, categories, action, policy version and a prompt hash. The hash proves a paste was handled without keeping the secret.</p>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; margin-bottom:24px;">
+            <div class="panel">
+              <h3 style="font-size:1rem; margin-bottom:10px;">Default policy</h3>
+              <table class="policy-table">
+                <thead><tr><th>Category</th><th>Action</th><th>Why</th></tr></thead>
+                <tbody>
+                  <tr><td>aws_key / private_key</td><td class="act-block">Block</td><td>One paste is a permanent credential leak</td></tr>
+                  <tr><td>pan / aadhaar</td><td class="act-block">Block</td><td>Regulated financial and identity data</td></tr>
+                  <tr><td>email / phone</td><td class="act-redact">Redact</td><td>Paste proceeds, identifiers replaced</td></tr>
+                  <tr><td>source_code / internal_url</td><td class="act-warn">Warn</td><td>Context-dependent — nudge, don't block</td></tr>
+                  <tr><td>allowlisted sender or repo</td><td class="act-allow">Allow</td><td>False positives kill adoption faster than leaks</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="panel">
+              <h3 style="font-size:1rem; margin-bottom:10px;">Two invariants, tested in CI</h3>
+              <div class="layer-stack">
+                <div class="layer" style="grid-template-columns:1fr;">
+                  <strong>INV-1 — raw prompt text never reaches storage or network</strong>
+                  <small>A runtime assertion throws if a stored record contains any key matching /prompt|content|text|raw/i. JSONL export is metadata-only.</small>
+                </div>
+                <div class="layer" style="grid-template-columns:1fr;">
+                  <strong>INV-2 — token maps are cleared on tab close and navigation</strong>
+                  <small>The placeholder map lives in a per-tab structure, never in storage, never in a message payload. After the tab closes the original is unrecoverable.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin:26px 0 12px;">
+            <div class="eyebrow">One umbrella, three layers</div>
+            <h3 style="font-size:1.1rem;">Enforcement, understanding, practice — all on-device</h3>
+          </div>
+          <div class="layer-stack" style="margin-bottom:24px;">
+            <div class="layer">
+              <strong>Guardrails</strong>
+              <div><small><strong style="color:#a5f3fc;">Enforcement, at the paste.</strong> Intercepts paste events on ChatGPT, Claude and Gemini, evaluates them locally, redacts or blocks by policy, and writes a metadata-only audit record.</small></div>
+            </div>
+            <div class="layer">
+              <strong>GyanSutr <span style="font-size:0.62rem; letter-spacing:0.08em; color:#fcd34d;">V2</span></strong>
+              <div><small><strong style="color:#a5f3fc;">Understanding, at the block.</strong> Local retrieval over your own policy documents so a block cites <em>your</em> clause instead of a generic warning. Self-hosted or on-prem — never in the detection path.</small></div>
+            </div>
+            <div class="layer">
+              <strong>Playbooks</strong>
+              <div><small><strong style="color:#a5f3fc;">Practice, before you need it.</strong> 38 free production playbooks that make the safe pattern the default pattern — <a href="#playbooks" onclick="return scrollToPlaybooks(event)" style="color:#67e8f9; text-decoration:underline;">browse the library →</a></small></div>
+            </div>
+          </div>
+          <div style="margin:26px 0 12px;">
+            <div class="eyebrow">Pricing</div>
+            <h3 style="font-size:1.1rem;">Free for individuals, per-seat when a company governs it</h3>
+          </div>
+          <div class="tier-grid" style="grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); margin-bottom:24px;">
+            <div class="tier-card highlighted">
+              <div>
+                <span class="badge badge-accent">FREE</span>
+                <h3 style="margin-top:8px; font-size:1rem;">Guard, local</h3>
+                <div class="tier-price">$0 <span>/ forever, no account</span></div>
+                <ul class="tier-list">
+                  <li>Paste detection on ChatGPT, Claude and Gemini</li>
+                  <li>Warn and redact with typed placeholders</li>
+                  <li>7-day metadata audit on this device</li>
+                  <li>Open rules pack · zero telemetry</li>
+                </ul>
+              </div>
+              <a class="btn btn-primary" style="width:100%; justify-content:center;" href="https://github.com/apchow/urstackai" target="_blank" rel="noopener">Get the free version →</a>
+            </div>
+            <div class="tier-card">
+              <div>
+                <span class="badge">ENTERPRISE</span>
+                <h3 style="margin-top:8px; font-size:1rem;">Guard, governed</h3>
+                <div class="tier-price">Custom <span>/ per seat / year</span></div>
+                <ul class="tier-list">
+                  <li>Shared, versioned policy packs and SSO</li>
+                  <li>Admin dashboard with 90-day audit retention</li>
+                  <li>Metadata-only webhook and SIEM export</li>
+                  <li>Self-hosted GyanSutr policy brain (v2)</li>
+                  <li>DPA and security-review support</li>
+                </ul>
+              </div>
+              <button class="btn" style="width:100%; justify-content:center;" onclick="openGuardSupport()">Talk to us →</button>
+            </div>
+          </div>
+
+          <div class="panel" style="border-color:var(--guard-border); background:linear-gradient(145deg, rgba(10,32,40,0.55), rgba(8,11,18,0.95));">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:22px; align-items:center;">
+              <div>
+                <div class="eyebrow guard-eyebrow">Enterprise</div>
+                <h3 style="font-size:1.15rem; margin-bottom:6px;">Run Guard across a team, on your own infrastructure</h3>
+                <p style="font-size:0.85rem; color:var(--text-secondary); margin:0 0 12px;">Shared policy packs, SSO, an admin dashboard that exports metadata-only audit records, a self-hosted policy server for cited explanations, and a DPA. Scoped per team, priced per seat.</p>
+                <div class="guard-cta" style="margin-bottom:0;">
+                  <button class="btn btn-guard" onclick="openGuardSupport()">Request an enterprise walkthrough →</button>
+                  <a class="btn" href="https://github.com/apchow/urstackai" target="_blank" rel="noopener">Free version</a>
+                </div>
+              </div>
+              <div style="font-size:0.76rem; color:var(--muted); line-height:1.75; border-left:1px solid var(--guard-border); padding-left:18px;">
+                <strong style="color:#a5f3fc; display:block; margin-bottom:4px;">Privacy statement</strong>
+                Local-first detection. No raw prompts are stored or transmitted. Audit records are metadata-only: category, action, tool, timestamp and a hash. Token maps are cleared when the tab closes. The free version never contacts us at all; enterprise audit export stays on your infrastructure unless you point it at your own SIEM.
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- =========================================================== -->
+        <!-- VIEW 1: WORKFLOW VAULT                                      -->
+        <!-- =========================================================== -->
+        <section id="workflowsPage" class="page-view">
+          <div class="section-hero guard-hero">
+            <div>
+              <div class="eyebrow guard-eyebrow">◆ UrStack Guard · Free &amp; Enterprise</div>
+              <h2 class="guard-h1">Stop company data leaking into <span class="guard-grad">AI tools</span>.</h2>
+              <p class="guard-sub">Every policy, training and audit lives somewhere other than the moment someone pastes a customer list, a credential or unreleased code into a prompt. Guard sits at that paste — detecting, redacting and blocking <strong>locally</strong>, before anything reaches a server.</p>
+              <div class="guard-invariants">
+                <span class="guard-chip">🔒 Local-first detection</span>
+                <span class="guard-chip">🚫 No raw prompts stored</span>
+                <span class="guard-chip">🧾 Metadata-only audit</span>
+              </div>
+              <div class="guard-cta">
+                <a class="btn btn-guard" href="/guard" onclick="return goGuard(event)">See what Guard does →</a>
+                <a class="btn" href="#playbooks" onclick="return scrollToPlaybooks(event)">Browse free playbooks</a>
+              </div>
+              <div class="metrics-bar">
+                <div><strong>At the paste</strong> Before the model sees it</div>
+                <div><strong>Coach, don't cop</strong> Redact, don't just block</div>
+                <div><strong>Tool-neutral</strong> ChatGPT · Claude · Gemini</div>
+              </div>
+            </div>
+
+            <div class="paste-mock" role="img" aria-label="A paste containing an AWS key and two customer emails is blocked and redacted locally before sending">
+              <div class="paste-mock-bar">
+                <span class="pdot"></span><span class="pdot"></span><span class="pdot"></span>
+                <span style="margin-left:6px;">chatgpt.com — paste event intercepted</span>
+              </div>
+              <div class="paste-mock-body">
+                <span class="ln">debug this billing webhook, creds:</span>
+                <span class="ln"><span class="hl-key">AKIAIOSFODNN7EXAMPLE</span> <span class="tag-block">BLOCKED · aws_key</span></span>
+                <span class="ln">customer dump → <span class="hl-mail">priya@acme.io</span></span>
+                <span class="ln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; → <span class="hl-mail">sam@acme.io</span></span>
+                <span class="ln">rewritten: certs <span class="ph">&lt;AWS_KEY_1&gt;</span> · mail <span class="ph">&lt;EMAIL_1..2&gt;</span></span>
+              </div>
+              <div class="paste-mock-foot">
+                <span class="tag-ok">SENT SAFELY · 3 spans redacted</span>
+                <span style="font-size:0.62rem; color:var(--muted);">audit evt_01HX · hash only</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="playbook-anchor" id="playbooks">
+            <div>
+              <div class="eyebrow">UrStackAI Playbooks · Free practice layer</div>
+              <h3 style="font-size:1.08rem; margin-bottom:2px;">38 verified agent playbooks — the safe pattern, made the default pattern</h3>
+              <p style="font-size:0.82rem; color:var(--muted); margin:0;">Copy-paste system prompts and <code>SKILL.md</code> architectures. Every prompt is free to read; bundles add the runnable scripts.</p>
+            </div>
+            <button class="btn btn-primary" onclick="openCheckout('UrStack All-Access Workflow Vault Pass', 29)">Vault Pass ($29 / ₹2,449) →</button>
           </div>
 
           <div class="controls">
@@ -3377,6 +3647,7 @@
           <label style="font-size:0.76rem; color:var(--muted);">Topic / Category *</label>
           <select id="helpTopicSelect" style="margin-top:4px; width:100%; padding:8px 10px; border-radius:8px; background:#151a26; border:1px solid var(--border); color:var(--text); font-size:0.83rem; color-scheme:dark;">
             <option value="Order Support or Refund Request" style="background:#151a26; color:#e6edf3;">Order Support or Refund Request</option>
+            <option value="UrStack Guard (free / enterprise)" style="background:#151a26; color:#e6edf3;">UrStack Guard (free / enterprise)</option>
             <option value="Workflow & Code Assistance" style="background:#151a26; color:#e6edf3;">Workflow & Code Assistance</option>
             <option value="Vibe-Code Bug / Error Traceback" style="background:#151a26; color:#e6edf3;">Vibe-Code Bug / Error Traceback</option>
             <option value="Sponsorship & Tool Partnership" style="background:#151a26; color:#e6edf3;">Sponsorship & Tool Partnership</option>
@@ -7377,6 +7648,45 @@ Every tool call and code edit must produce an AST-validated diff, pass regressio
       const faq = document.getElementById("faqSection");
       if (faq) faq.scrollIntoView({ behavior: "smooth" });
     }
+
+    // ===== UrStack Guard pivot helpers =====
+    function goGuard(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      navigate("guardPage", "UrStack Guard");
+      return false;
+    }
+
+    function scrollToPlaybooks(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      if (!document.getElementById("workflowsPage").classList.contains("active")) {
+        navigate("workflowsPage", "Playbooks");
+      }
+      setTimeout(function () {
+        const el = document.getElementById("playbooks");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 90);
+    }
+
+    function openGuardSupport() {
+      openModal("founderHelpModal");
+      const sel = document.getElementById("helpTopicSelect");
+      if (sel) sel.value = "UrStack Guard (free / enterprise)";
+    }
+
+    function dismissGuardBanner() {
+      const b = document.getElementById("guardBanner");
+      if (b) b.style.display = "none";
+      try { localStorage.setItem("urstack_guard_banner_dismissed", "1"); } catch (e) {}
+    }
+
+    try {
+      const guardPath = location.pathname.replace(/\/+$/, "");
+      if (guardPath === "/guard") navigate("guardPage", "UrStack Guard");
+      if (localStorage.getItem("urstack_guard_banner_dismissed") === "1") {
+        const gb = document.getElementById("guardBanner");
+        if (gb) gb.style.display = "none";
+      }
+    } catch (err) {}
 
     renderWorkflows();
     renderDir();
