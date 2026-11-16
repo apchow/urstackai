@@ -1,0 +1,9 @@
+{
+  "name": "urstack-redact",
+  "version": "1.0.0",
+  "description": "Strip secrets and PII from text before it is pasted into an AI tool. Same rules as UrStack Guard.",
+  "bin": { "urstack-redact": "bin/urstack-redact.js" },
+  "license": "MIT",
+  "engines": { "node": ">=16" },
+  "files": ["bin", "README.md"]
+}

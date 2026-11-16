@@ -1,6 +1,6 @@
 # UrStack open-source developer tools
 
-Six MIT-licensed projects, each self-contained and publishable as its own repository. They target the failure modes that break real AI/agent stacks: leaked keys, runaway spend, dependency drift, and stack traces nobody wants to read.
+Eight MIT-licensed projects, each self-contained and publishable as its own repository. They target the failure modes that break real AI/agent stacks: leaked keys, runaway spend, dependency drift, and stack traces nobody wants to read.
 
 | Project | Kind | Purpose |
 | --- | --- | --- |
@@ -8,6 +8,8 @@ Six MIT-licensed projects, each self-contained and publishable as its own reposi
 | [`urstack-envscan`](./urstack-envscan) | CLI | Scan repos for leaked API keys, committed `.env` files, private keys and insecure SSH config |
 | [`urstack-costguard`](./urstack-costguard) | CLI | AI API cost monitor and circuit breaker — hard spend ceilings for runaway LLM bills |
 | [`urstack-stackpick`](./urstack-stackpick) | CLI | Hardware-aware AI stack recommender — match local models to your CPU/RAM/VRAM |
+| [`urstack-redact`](./urstack-redact) | CLI | Strip secrets and PII from text before it goes into an AI tool |
+| [`urstack-skill`](./urstack-skill) | CLI | Scaffold and validate SKILL.md playbooks an agent can follow |
 | [`urstack-snippets`](./urstack-snippets) | VS Code extension | 200+ snippets for OpenAI, Anthropic, Gemini, OpenRouter and Ollama |
 | [`awesome-urstack`](./awesome-urstack) | List | Curated index of agent workflows, local-AI tooling and diagnostics |
 
@@ -20,6 +22,8 @@ node oss-tools/urstack-trace/bin/cli.js --help
 node oss-tools/urstack-envscan/bin/cli.js --help
 node oss-tools/urstack-costguard/bin/cli.js --help
 node oss-tools/urstack-stackpick/bin/cli.js --help
+node oss-tools/urstack-redact/bin/urstack-redact.js --help
+node oss-tools/urstack-skill/bin/urstack-skill.js --help
 ```
 
 ## Publish each as a standalone GitHub repository

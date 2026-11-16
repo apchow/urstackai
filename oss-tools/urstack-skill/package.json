@@ -1,0 +1,9 @@
+{
+  "name": "urstack-skill",
+  "version": "1.0.0",
+  "description": "Scaffold and validate SKILL.md playbooks — front matter, five sections, no filler.",
+  "bin": { "urstack-skill": "bin/urstack-skill.js" },
+  "license": "MIT",
+  "engines": { "node": ">=16" },
+  "files": ["bin", "README.md"]
+}
