@@ -168,13 +168,14 @@ Repo: https://github.com/apchow/urstackai · Live: https://urstack-ai.vercel.app
     cat draft.txt | node oss-tools/urstack-redact/bin/urstack-redact.js
     ```
 
-18. **VERIFY** the engine with known synthetic data:
+18. **VERIFY** the engine against the committed demo file (`demo.txt` ships in the repo
+    root, all values synthetic):
     ```bash
-    printf 'Mail jane.doe@example.com or 9876543210.\nKey AKIAIOSFODNN7EXAMPLE.\nCard 4111 1111 1111 1111 order 1234567890123.\nDate 2026-11-17.\n' > demo.txt
     node oss-tools/urstack-redact/bin/urstack-redact.js demo.txt --map
     ```
-    **VERIFY:** exactly 4 spans replaced. The order ID and the date must survive
-    unchanged — that proves the Luhn check and the date guard work.
+    **VERIFY:** exactly 4 spans replaced — `AWS_KEY×1, EMAIL×1, PAN×1, PHONE×1`. The order
+    ID `1234567890123` and the date `2026-11-17` must survive unchanged; that proves the
+    Luhn check and the date guard work.
 
 19. The other CLIs:
     ```bash

@@ -35,11 +35,13 @@ ship. They do not. Treat that copy as the spec for the next milestone, and see
 
 ## The core idea, in one example
 
+`demo.txt` ships in the repo root, so this runs on a fresh clone with no setup:
+
 ```bash
-node oss-tools/urstack-redact/bin/urstack-redact.js notes.txt --map
+node oss-tools/urstack-redact/bin/urstack-redact.js demo.txt --map
 ```
 
-Input:
+Input (`demo.txt` — every value is synthetic test data):
 
 ```
 Ping me at jane.doe@example.com or 9876543210.
@@ -79,6 +81,7 @@ tokens, Resend keys, PEM private-key blocks, JWTs, emails, Luhn-valid card numbe
 
 ```
 index.html          The entire front end — one file, 5 client-side views, no build step
+demo.txt            Synthetic sample input for the redaction demo (safe to share)
 api/                8 Vercel serverless functions (see below)
 oss-tools/          8 MIT projects, each self-contained and separately publishable
 vercel.json         Rewrites (/guard → /), Netlify compat, security headers
@@ -174,8 +177,8 @@ cd urstackai
 # Run the site — it is a static file, any server works
 npx serve .            # then open http://localhost:3000
 
-# Try the engine, no install needed
-node oss-tools/urstack-redact/bin/urstack-redact.js --help
+# Try the engine on the bundled demo file — no install, no account
+node oss-tools/urstack-redact/bin/urstack-redact.js demo.txt --map
 ```
 
 For env vars, serverless functions locally, and deployment, follow

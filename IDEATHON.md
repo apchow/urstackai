@@ -252,11 +252,13 @@ can do it in one take.
 
 ### Prepare (10 minutes)
 
-1. Create the demo file in the repo root:
+1. `demo.txt` is **already committed at the repo root** — nothing to create. Confirm it:
    ```bash
-   printf 'Ping me at jane.doe@example.com or 9876543210.\nAWS key AKIAIOSFODNN7EXAMPLE was committed.\nCard 4111 1111 1111 1111 and order id 1234567890123.\nDate 2026-11-17 stays.\n' > demo.txt
+   cat demo.txt
    ```
-   All values are synthetic test data. Do not use a real key or a real card number.
+   Every value in it is synthetic: `example.com` is a reserved domain,
+   `AKIAIOSFODNN7EXAMPLE` is AWS's own documentation example key, and `4111 1111 1111 1111`
+   is the standard Visa test number. Never swap in a real key or a real card number.
 
 2. Rehearse the demo once so the output is not a surprise:
    ```bash
