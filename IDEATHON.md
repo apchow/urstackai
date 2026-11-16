@@ -86,6 +86,26 @@ node oss-tools/urstack-redact/bin/urstack-redact.js demo.txt --map
 > engine in one sitting — which is the point, because you're trusting it with your
 > secrets."
 
+### Optional 10-second beats (both verified — use if you have time or get challenged)
+
+Placeholder stability — the same value always maps to the same placeholder:
+
+```bash
+printf 'From jane.doe@example.com to bob@example.com.\nReply jane.doe@example.com again.\n' \
+  | node oss-tools/urstack-redact/bin/urstack-redact.js
+# From <EMAIL_1> to <EMAIL_2>.
+# Reply <EMAIL_1> again.
+```
+
+Luhn precision — one digit wrong is not a card number:
+
+```bash
+printf 'valid   4111111111111111\ninvalid 4111111111111112\n' \
+  | node oss-tools/urstack-redact/bin/urstack-redact.js
+# valid   <PAN_1>
+# invalid 4111111111111112
+```
+
 ### 3:15 – 4:00 · What's built, what's next `[SCREEN: repo file tree, then the site]`
 
 > "Let me be precise about state, because it matters.
@@ -171,9 +191,33 @@ Never bluff this. Volunteering the boundary is what makes the rest credible.
 
 ### Q7: "Why should I trust your code with my secrets?"
 
-> "Because you can read all of it. Eighty-one lines, zero dependencies, no network calls,
-> no telemetry, MIT. The placeholder map is per-run and never contains the original
-> value. Auditability is the security model."
+> "Because you can read all of it. Eighty-one lines, one import — `fs`. No network calls,
+> no telemetry, MIT. The placeholder map is per-run and never contains the original value.
+> Auditability is the security model."
+
+**Verified proof you can run live if challenged.** Block every network and subprocess
+module, then run the engine — it still works, exit code 0:
+
+```bash
+cat > block-net.js <<'EOF'
+const Module = require('module');
+const banned = new Set(['net','http','https','http2','dns','tls','dgram','child_process','worker_threads']);
+const orig = Module._load;
+Module._load = function (request) {
+  if (banned.has(request.replace(/^node:/, ''))) {
+    console.error('NETWORK ATTEMPT BLOCKED: ' + request);
+    process.exit(99);
+  }
+  return orig.apply(this, arguments);
+};
+EOF
+node --require ./block-net.js oss-tools/urstack-redact/bin/urstack-redact.js demo.txt --map
+echo "exit: $?"
+rm block-net.js
+```
+
+This was run and passed. It is a much stronger answer than asserting "no network" —
+the process had no ability to make a network call and still redacted correctly.
 
 ### Q8: "Who else is doing this?"
 
