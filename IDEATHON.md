@@ -59,9 +59,17 @@ Speak at ~140 words/minute. Timings are cumulative. `[SCREEN]` marks what is on 
 > number. We run Luhn validation, so we redact the card and leave the order ID alone.
 > That's the difference between a tool people keep on and a tool they uninstall in a day."
 
-### 2:00 – 3:15 · Live demo `[SCREEN: terminal, full screen]`
+### 2:00 – 3:15 · Live demo
 
-Run these two commands. Nothing else.
+**Recommended: use the browser demo — it is more visual than a terminal and a judge can
+repeat it themselves.** Open https://urstack-ai.vercel.app/guard, scroll to **"Try it now"**,
+and click *Redact locally*. The sample is pre-filled. Then open DevTools → Network, click
+it again, and show the request list staying empty. That single moment proves "local-first"
+better than any slide.
+
+Say the same words as below; they apply to both surfaces.
+
+**Terminal alternative** (use if the venue wifi is unreliable — it needs no network at all):
 
 ```bash
 cat demo.txt
@@ -110,15 +118,17 @@ printf 'valid   4111111111111111\ninvalid 4111111111111112\n' \
 
 > "Let me be precise about state, because it matters.
 >
-> **Built and running:** the rule engine, seven more MIT tools, and the full platform —
-> five views, twenty-eight workflow bundles, a seventy-six-tool directory, Google sign-in,
-> payments, serverless backend. It's live at urstack-ai.vercel.app.
+> **Built and running:** the rule engine, the live in-browser demo you just used, seven
+> more MIT tools, and the full platform — five views, twenty-eight workflow bundles, a
+> seventy-six-tool directory, Google sign-in, payments, serverless backend. It's live at
+> urstack-ai.vercel.app.
 >
 > **Next milestone, and it's a small one:** the browser extension that runs this same
-> engine on the paste event in ChatGPT, Claude and Gemini. The hard part — detection with
-> low false positives — is done and tested by hand. The remaining work is wiring it to a
-> content script and enforcing two invariants in CI: no raw sensitive value ever reaches
-> the outgoing prompt, and the placeholder map dies when the tab closes.
+> engine automatically on the paste event in ChatGPT, Claude and Gemini. Today you paste
+> into our demo box; the extension removes that step. The hard part — detection with low
+> false positives — is done. The remaining work is a content script plus two invariants
+> enforced in CI: no raw sensitive value ever reaches the outgoing prompt, and the
+> placeholder map dies when the tab closes.
 >
 > One shared engine, two surfaces. That's the architecture."
 
@@ -153,9 +163,10 @@ are automatic. Keep every answer under 60 words — then stop talking.
 
 ### ★ Q1: "Is the browser extension actually working?"
 
-> "No. The engine is working and demonstrated; the paste-interception layer is the next
-> milestone. I'd rather show you a real engine than a mocked extension. The detection
-> problem is solved — the content script is plumbing."
+> "The engine works and you can use it right now in the browser — that demo is real, runs
+> locally, and makes no network call. What doesn't exist yet is the extension that fires
+> automatically on paste in ChatGPT. Today you paste into our box; the extension removes
+> that step. Detection is solved; the content script is plumbing."
 
 Never bluff this. Volunteering the boundary is what makes the rest credible.
 

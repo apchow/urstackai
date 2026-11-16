@@ -20,6 +20,7 @@ browser interception layer is not built yet.
 | Piece | Status | Where |
 | --- | --- | --- |
 | Redaction rule engine (12 rules, Luhn validation, stable placeholders) | **Working** | [`oss-tools/urstack-redact`](oss-tools/urstack-redact) |
+| In-browser demo — paste text, redact it locally, zero network calls | **Working** | `#guardDemo` in [`index.html`](index.html), live at [/guard](https://urstack-ai.vercel.app/guard) |
 | Six other MIT CLIs + VS Code snippets | **Working** | [`oss-tools/`](oss-tools) |
 | Website, 5 views, 28 workflows, 76-tool directory | **Working** | [`index.html`](index.html) |
 | Google sign-in, PayU checkout, notifications, AI proxy | **Working** (needs env vars) | [`api/`](api) |
@@ -32,6 +33,17 @@ ship. They do not. Treat that copy as the spec for the next milestone, and see
 [`IDEATHON.md`](IDEATHON.md) for how to present this honestly.
 
 ---
+
+## Try it without installing anything
+
+Open https://urstack-ai.vercel.app/guard and use the **"Try it now"** panel: paste text,
+hit *Redact locally*, and the sensitive spans become typed placeholders. It runs the same
+12 rules as the CLI, in the page. Open DevTools → Network while you do it — no request is
+made. Output is written with `textContent`, never `innerHTML`, so pasted markup cannot
+execute.
+
+The browser engine and the CLI are verified to produce identical output. They are two
+copies of the same rules, so **keep them in sync** — the CLI is the source of truth.
 
 ## The core idea, in one example
 
@@ -194,7 +206,8 @@ The highest-value work right now, in order:
    `urstack-redact`; port it to a content script and wire up the placeholder map.
 2. **Add the tests and CI that the copy already claims** — INV-1 (no raw sensitive value
    ever reaches the outgoing prompt) and INV-2 (token maps are cleared when the tab closes).
-3. **Extract the shared rule engine** so the CLI and the extension cannot drift apart.
+3. **Extract one shared rule engine.** The rules now exist in two places — the CLI and
+   `GUARD_DEMO_RULES` in `index.html`. They are tested to match today, but they will drift.
 4. Authenticate and rate-limit `/api/ai-chat`.
 5. Refresh `llms.txt`, which still describes the pre-Guard product.
 
