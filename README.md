@@ -38,9 +38,10 @@ ship. They do not. Treat that copy as the spec for the next milestone, and see
 
 Open https://urstack-ai.vercel.app/guard and use the **"Try it now"** panel: paste text,
 hit *Redact locally*, and the sensitive spans become typed placeholders. It runs the same
-12 rules as the CLI, in the page. Open DevTools → Network while you do it — no request is
-made. Output is written with `textContent`, never `innerHTML`, so pasted markup cannot
-execute.
+12 rules as the CLI, in the page. Your text is never uploaded: open DevTools → Network,
+redact again, and no new request appears. (The page itself makes two auth calls on load —
+`auth-me` and `auth-config` — so the list is not empty, but redacting adds nothing to it.)
+Output is written with `textContent`, never `innerHTML`, so pasted markup cannot execute.
 
 The browser engine and the CLI are verified to produce identical output. They are two
 copies of the same rules, so **keep them in sync** — the CLI is the source of truth.

@@ -63,9 +63,11 @@ Speak at ~140 words/minute. Timings are cumulative. `[SCREEN]` marks what is on 
 
 **Recommended: use the browser demo — it is more visual than a terminal and a judge can
 repeat it themselves.** Open https://urstack-ai.vercel.app/guard, scroll to **"Try it now"**,
-and click *Redact locally*. The sample is pre-filled. Then open DevTools → Network, click
-it again, and show the request list staying empty. That single moment proves "local-first"
-better than any slide.
+and click *Redact locally*. The sample is pre-filled. Then open DevTools → Network, note the
+two requests already there (`auth-me`, `auth-config` — page load, not your text), click
+redact again, and show that **no new request appears**. That single moment proves
+"local-first" better than any slide. Don't claim the list is empty; it isn't, and a judge
+who checks will catch it.
 
 Say the same words as below; they apply to both surfaces.
 
