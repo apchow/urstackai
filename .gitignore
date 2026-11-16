@@ -1,3 +1,5 @@
 .vercel
 .env*
 node_modules/
+# packaged VS Code extension artifacts
+*.vsix

@@ -1,7 +1,7 @@
 {
   "name": "urstack-snippets",
   "displayName": "UrStack AI Snippets — LLM & Agent Integration Patterns",
-  "description": "200+ code snippets for AI/LLM integration: OpenAI, Anthropic Claude, Google Gemini, Ollama, LangChain, and agent patterns. By UrStack AI.",
+  "description": "40 copy-paste code snippets for AI/LLM integration: OpenAI, Anthropic Claude, Google Gemini, Ollama, LangChain plus retry, streaming, tool-calling and cost-guard patterns. By UrStack AI.",
   "version": "1.0.0",
   "publisher": "urstack-ai",
   "engines": {
@@ -28,7 +28,6 @@
     "type": "git",
     "url": "https://github.com/apchow/urstack-snippets"
   },
-  "icon": "icon.png",
   "activationEvents": [
     "onStartupFinished"
   ],

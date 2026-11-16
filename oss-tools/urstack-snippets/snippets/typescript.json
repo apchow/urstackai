@@ -1,0 +1,177 @@
+{
+  "UrStack: OpenAI Client (TS)": {
+    "prefix": "ur-openai-client",
+    "body": [
+      "import OpenAI from 'openai';",
+      "",
+      "export const client: OpenAI = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });"
+    ],
+    "description": "Typed OpenAI client from env."
+  },
+  "UrStack: OpenAI Chat (TS)": {
+    "prefix": "ur-openai-chat",
+    "body": [
+      "type Message = { role: 'system' | 'user' | 'assistant'; content: string };",
+      "",
+      "const messages: Message[] = [",
+      "  { role: 'system', content: 'You are a helpful assistant.' },",
+      "  { role: 'user', content: ${1:\"$TM_SELECTED_TEXT\"} },",
+      "];",
+      "",
+      "const response = await client.chat.completions.create({ model: 'gpt-4o', messages });",
+      "const text: string = response.choices[0].message.content ?? '';",
+      "console.log(text);"
+    ],
+    "description": "Typed message array and chat completion."
+  },
+  "UrStack: OpenAI Streaming (TS)": {
+    "prefix": "ur-openai-stream",
+    "body": [
+      "const stream = await client.chat.completions.create({",
+      "  model: 'gpt-4o',",
+      "  messages: [{ role: 'user', content: ${1:\"$TM_SELECTED_TEXT\"} }],",
+      "  stream: true,",
+      "});",
+      "for await (const chunk of stream) {",
+      "  const delta: string = chunk.choices[0]?.delta?.content ?? '';",
+      "  process.stdout.write(delta);",
+      "}"
+    ],
+    "description": "Typed streaming loop."
+  },
+  "UrStack: Typed Tool Loop (TS)": {
+    "prefix": "ur-tool-loop",
+    "body": [
+      "interface Tool {",
+      "  name: string;",
+      "  run: (args: Record<string, unknown>) => Promise<unknown>;",
+      "}",
+      "",
+      "async function runToolLoop(prompt: string, tools: Tool[], maxTurns = 5) {",
+      "  const messages: any[] = [{ role: 'user', content: prompt }];",
+      "  for (let turn = 0; turn < maxTurns; turn++) {",
+      "    const res = await client.chat.completions.create({",
+      "      model: 'gpt-4o',",
+      "      messages,",
+      "      tools: tools.map((t) => ({",
+      "        type: 'function' as const,",
+      "        function: { name: t.name, parameters: { type: 'object', properties: {} } },",
+      "      })),",
+      "    });",
+      "    const msg = res.choices[0].message;",
+      "    messages.push(msg);",
+      "    if (!msg.tool_calls?.length) return msg.content;",
+      "    for (const call of msg.tool_calls) {",
+      "      const tool = tools.find((t) => t.name === call.function.name);",
+      "      if (!tool) continue;",
+      "      const args = JSON.parse(call.function.arguments || '{}');",
+      "      const result = await tool.run(args);",
+      "      messages.push({ role: 'tool', tool_call_id: call.id, content: JSON.stringify(result) });",
+      "    }",
+      "  }",
+      "  return null;",
+      "}"
+    ],
+    "description": "Multi-turn tool-calling loop with typed tools."
+  },
+  "UrStack: Next.js Route (TS)": {
+    "prefix": "ur-ai-route",
+    "body": [
+      "import OpenAI from 'openai';",
+      "import { NextRequest } from 'next/server';",
+      "",
+      "const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });",
+      "",
+      "export async function POST(req: NextRequest) {",
+      "  const { prompt }: { prompt: string } = await req.json();",
+      "  const r = await client.chat.completions.create({",
+      "    model: 'gpt-4o',",
+      "    messages: [{ role: 'user', content: prompt }],",
+      "  });",
+      "  return Response.json({ answer: r.choices[0].message.content });",
+      "}"
+    ],
+    "description": "Typed Next.js App Router handler."
+  },
+  "UrStack: Retry with Backoff (TS)": {
+    "prefix": "ur-retry-backoff",
+    "body": [
+      "async function retry<T>(fn: () => Promise<T>, retries = 5, base = 1000, cap = 60000): Promise<T> {",
+      "  for (let attempt = 0; attempt < retries; attempt++) {",
+      "    try {",
+      "      return await fn();",
+      "    } catch (err) {",
+      "      if (attempt === retries - 1) throw err;",
+      "      const delay = Math.min(cap, base * 2 ** attempt);",
+      "      await new Promise((resolve) => setTimeout(resolve, delay));",
+      "    }",
+      "  }",
+      "  throw new Error('unreachable');",
+      "}"
+    ],
+    "description": "Generic typed retry wrapper."
+  },
+  "UrStack: Safe Env Loader (TS)": {
+    "prefix": "ur-env-safe",
+    "body": [
+      "function requireEnv(name: string): string {",
+      "  const value = process.env[name];",
+      "  if (!value) throw new Error('Missing required env var: ' + name);",
+      "  return value;",
+      "}",
+      "",
+      "export const OPENAI_API_KEY: string = requireEnv('OPENAI_API_KEY');"
+    ],
+    "description": "Typed env loader that fails fast."
+  },
+  "UrStack: Cost Guard (TS)": {
+    "prefix": "ur-cost-guard",
+    "body": [
+      "let spent = 0;",
+      "const MAX_COST_USD = 2.0;",
+      "",
+      "function charge(tokensIn: number, tokensOut: number, priceIn = 5e-6, priceOut = 1.5e-5): number {",
+      "  const cost = tokensIn * priceIn + tokensOut * priceOut;",
+      "  if (spent + cost > MAX_COST_USD) {",
+      "    throw new Error('Spend ceiling hit: $' + spent.toFixed(4));",
+      "  }",
+      "  spent += cost;",
+      "  return cost;",
+      "}"
+    ],
+    "description": "Typed per-task spend ceiling."
+  },
+  "UrStack: Structured Output (TS)": {
+    "prefix": "ur-structured-output",
+    "body": [
+      "interface Answer {",
+      "  summary: string;",
+      "  confidence: number;",
+      "}",
+      "",
+      "const r = await client.chat.completions.create({",
+      "  model: 'gpt-4o',",
+      "  response_format: { type: 'json_object' },",
+      "  messages: [",
+      "    { role: 'system', content: 'Reply with JSON: {\"summary\": string, \"confidence\": number}' },",
+      "    { role: 'user', content: ${1:\"$TM_SELECTED_TEXT\"} },",
+      "  ],",
+      "});",
+      "const answer = JSON.parse(r.choices[0].message.content) as Answer;",
+      "console.log(answer);"
+    ],
+    "description": "JSON-mode output cast to a typed interface."
+  },
+  "UrStack: Embeddings (TS)": {
+    "prefix": "ur-embeddings",
+    "body": [
+      "const emb = await client.embeddings.create({",
+      "  model: 'text-embedding-3-small',",
+      "  input: ${1:\"$TM_SELECTED_TEXT\"},",
+      "});",
+      "const vector: number[] = emb.data[0].embedding;",
+      "console.log('dimensions:', vector.length);"
+    ],
+    "description": "Typed embeddings call."
+  }
+}

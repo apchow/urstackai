@@ -1,0 +1,255 @@
+{
+  "UrStack: OpenAI Client (Python)": {
+    "prefix": "ur-openai-client",
+    "body": [
+      "from openai import OpenAI",
+      "import os",
+      "",
+      "client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\"))"
+    ],
+    "description": "Initialize an OpenAI client from env (no hardcoded keys)."
+  },
+  "UrStack: OpenAI Chat Completion": {
+    "prefix": "ur-openai-chat",
+    "body": [
+      "response = client.chat.completions.create(",
+      "    model=\"gpt-4o\",",
+      "    messages=[",
+      "        {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},",
+      "        {\"role\": \"user\", \"content\": ${1:\"$TM_SELECTED_TEXT\"}},",
+      "    ],",
+      "    temperature=0.7,",
+      ")",
+      "print(response.choices[0].message.content)"
+    ],
+    "description": "Basic OpenAI chat completion with system + user messages."
+  },
+  "UrStack: OpenAI Streaming": {
+    "prefix": "ur-openai-stream",
+    "body": [
+      "stream = client.chat.completions.create(",
+      "    model=\"gpt-4o\",",
+      "    messages=[{\"role\": \"user\", \"content\": ${1:\"$TM_SELECTED_TEXT\"}}],",
+      "    stream=True,",
+      ")",
+      "for chunk in stream:",
+      "    delta = chunk.choices[0].delta.content or \"\"",
+      "    print(delta, end=\"\", flush=True)",
+      "print()"
+    ],
+    "description": "Streaming chat completion, token by token."
+  },
+  "UrStack: OpenAI Function Calling": {
+    "prefix": "ur-openai-function",
+    "body": [
+      "tools = [",
+      "    {",
+      "        \"type\": \"function\",",
+      "        \"function\": {",
+      "            \"name\": \"get_weather\",",
+      "            \"description\": \"Get current weather for a city\",",
+      "            \"parameters\": {",
+      "                \"type\": \"object\",",
+      "                \"properties\": {\"city\": {\"type\": \"string\"}},",
+      "                \"required\": [\"city\"],",
+      "            },",
+      "        },",
+      "    }",
+      "]",
+      "",
+      "response = client.chat.completions.create(",
+      "    model=\"gpt-4o\",",
+      "    messages=[{\"role\": \"user\", \"content\": ${1:\"$TM_SELECTED_TEXT\"}}],",
+      "    tools=tools,",
+      "    tool_choice=\"auto\",",
+      ")",
+      "for tc in response.choices[0].message.tool_calls or []:",
+      "    print(tc.function.name, tc.function.arguments)"
+    ],
+    "description": "OpenAI tool/function calling starter."
+  },
+  "UrStack: Anthropic Claude Chat": {
+    "prefix": "ur-anthropic-chat",
+    "body": [
+      "from anthropic import Anthropic",
+      "import os",
+      "",
+      "client = Anthropic(api_key=os.environ.get(\"ANTHROPIC_API_KEY\"))",
+      "",
+      "message = client.messages.create(",
+      "    model=\"claude-3-5-sonnet-20241022\",",
+      "    max_tokens=1024,",
+      "    system=\"You are a helpful assistant.\",",
+      "    messages=[{\"role\": \"user\", \"content\": ${1:\"$TM_SELECTED_TEXT\"}}],",
+      ")",
+      "print(message.content[0].text)"
+    ],
+    "description": "Claude chat completion with a system prompt."
+  },
+  "UrStack: Google Gemini Chat": {
+    "prefix": "ur-gemini-chat",
+    "body": [
+      "import google.generativeai as genai",
+      "import os",
+      "",
+      "genai.configure(api_key=os.environ.get(\"GEMINI_API_KEY\"))",
+      "model = genai.GenerativeModel(\"gemini-1.5-pro\")",
+      "",
+      "response = model.generate_content(${1:\"$TM_SELECTED_TEXT\"})",
+      "print(response.text)"
+    ],
+    "description": "Google Gemini chat completion."
+  },
+  "UrStack: Ollama Local Chat": {
+    "prefix": "ur-ollama-chat",
+    "body": [
+      "import requests",
+      "",
+      "resp = requests.post(",
+      "    \"http://localhost:11434/api/chat\",",
+      "    json={",
+      "        \"model\": \"llama3.1\",",
+      "        \"messages\": [{\"role\": \"user\", \"content\": ${1:\"$TM_SELECTED_TEXT\"}}],",
+      "        \"stream\": False,",
+      "    },",
+      "    timeout=120,",
+      ")",
+      "print(resp.json()[\"message\"][\"content\"])"
+    ],
+    "description": "Chat with a local Ollama model, no cloud dependency."
+  },
+  "UrStack: Retry with Exponential Backoff": {
+    "prefix": "ur-retry-backoff",
+    "body": [
+      "import time, random",
+      "",
+      "def retry(fn, retries=5, base=1.0, cap=60.0):",
+      "    for attempt in range(retries):",
+      "        try:",
+      "            return fn()",
+      "        except Exception:",
+      "            if attempt == retries - 1:",
+      "                raise",
+      "            delay = min(cap, base * (2 ** attempt)) + random.uniform(0, 1)",
+      "            time.sleep(delay)"
+    ],
+    "description": "Resilient retry wrapper for 429/5xx provider errors."
+  },
+  "UrStack: Token Counter (tiktoken)": {
+    "prefix": "ur-token-count",
+    "body": [
+      "import tiktoken",
+      "",
+      "enc = tiktoken.encoding_for_model(\"gpt-4o\")",
+      "tokens = enc.encode(${1:\"$TM_SELECTED_TEXT\"} if isinstance(${1:\"$TM_SELECTED_TEXT\"}, str) else \"\")",
+      "print(f\"Tokens: {len(tokens)}\")"
+    ],
+    "description": "Pre-check token count before sending a request."
+  },
+  "UrStack: Safe Env Loader": {
+    "prefix": "ur-env-safe",
+    "body": [
+      "import os",
+      "from dotenv import load_dotenv",
+      "",
+      "load_dotenv()",
+      "",
+      "def require_env(name):",
+      "    val = os.environ.get(name)",
+      "    if not val:",
+      "        raise RuntimeError(f\"Missing required env var: {name}\")",
+      "    return val",
+      "",
+      "OPENAI_API_KEY = require_env(\"OPENAI_API_KEY\")"
+    ],
+    "description": "Load env safely and fail fast on missing keys."
+  },
+  "UrStack: OpenAI Embeddings": {
+    "prefix": "ur-embeddings",
+    "body": [
+      "response = client.embeddings.create(",
+      "    model=\"text-embedding-3-small\",",
+      "    input=${1:\"$TM_SELECTED_TEXT\"},",
+      ")",
+      "vector = response.data[0].embedding",
+      "print(f\"Dimensions: {len(vector)}\")"
+    ],
+    "description": "Generate embeddings for RAG or semantic search."
+  },
+  "UrStack: Text Chunking": {
+    "prefix": "ur-chunking",
+    "body": [
+      "def chunk_text(text, size=500, overlap=50):",
+      "    chunks, start = [], 0",
+      "    while start < len(text):",
+      "        end = start + size",
+      "        chunks.append(text[start:end])",
+      "        start = max(end - overlap, 0)",
+      "        if end >= len(text):",
+      "            break",
+      "    return chunks"
+    ],
+    "description": "Split long text into overlapping chunks for RAG."
+  },
+  "UrStack: FastAPI AI Route": {
+    "prefix": "ur-ai-route",
+    "body": [
+      "from fastapi import FastAPI, HTTPException",
+      "from pydantic import BaseModel",
+      "from openai import OpenAI",
+      "import os",
+      "",
+      "app = FastAPI()",
+      "client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\"))",
+      "",
+      "class Ask(BaseModel):",
+      "    prompt: str",
+      "",
+      "@app.post(\"/api/ask\")",
+      "async def ask(req: Ask):",
+      "    try:",
+      "        r = client.chat.completions.create(",
+      "            model=\"gpt-4o\",",
+      "            messages=[{\"role\": \"user\", \"content\": req.prompt}],",
+      "        )",
+      "        return {\"answer\": r.choices[0].message.content}",
+      "    except Exception as e:",
+      "        raise HTTPException(status_code=500, detail=str(e))"
+    ],
+    "description": "Server-side FastAPI proxy, keeps your key off the client."
+  },
+  "UrStack: Cost Guard (Python)": {
+    "prefix": "ur-cost-guard",
+    "body": [
+      "MAX_COST_USD = 2.0",
+      "spent = 0.0",
+      "",
+      "def charge(tokens_in, tokens_out, price_in=0.000005, price_out=0.000015):",
+      "    global spent",
+      "    cost = tokens_in * price_in + tokens_out * price_out",
+      "    if spent + cost > MAX_COST_USD:",
+      "        raise RuntimeError(f\"Spend ceiling hit: spent ${spent:.4f} + ${cost:.4f}\")",
+      "    spent += cost",
+      "    return cost"
+    ],
+    "description": "Hard per-task LLM spend ceiling."
+  },
+  "UrStack: Pydantic Structured Output": {
+    "prefix": "ur-structured-output",
+    "body": [
+      "from pydantic import BaseModel",
+      "",
+      "class Answer(BaseModel):",
+      "    summary: str",
+      "    confidence: float",
+      "",
+      "completion = client.beta.chat.completions.parse(",
+      "    model=\"gpt-4o\",",
+      "    messages=[{\"role\": \"user\", \"content\": ${1:\"$TM_SELECTED_TEXT\"}}],",
+      "    response_format=Answer,",
+      ")",
+      "print(completion.choices[0].message.parsed)"
+    ],
+    "description": "Typed JSON output parsed into a Pydantic model."
+  }
+}

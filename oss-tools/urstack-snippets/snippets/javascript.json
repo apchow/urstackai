@@ -1,0 +1,258 @@
+{
+  "UrStack: OpenAI Client (JS)": {
+    "prefix": "ur-openai-client",
+    "body": [
+      "import OpenAI from 'openai';",
+      "",
+      "const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });"
+    ],
+    "description": "Initialize an OpenAI client from env."
+  },
+  "UrStack: OpenAI Chat (JS)": {
+    "prefix": "ur-openai-chat",
+    "body": [
+      "const response = await client.chat.completions.create({",
+      "  model: 'gpt-4o',",
+      "  messages: [",
+      "    { role: 'system', content: 'You are a helpful assistant.' },",
+      "    { role: 'user', content: ${1:\"$TM_SELECTED_TEXT\"} },",
+      "  ],",
+      "});",
+      "console.log(response.choices[0].message.content);"
+    ],
+    "description": "Basic OpenAI chat completion."
+  },
+  "UrStack: OpenAI Streaming (JS)": {
+    "prefix": "ur-openai-stream",
+    "body": [
+      "const stream = await client.chat.completions.create({",
+      "  model: 'gpt-4o',",
+      "  messages: [{ role: 'user', content: ${1:\"$TM_SELECTED_TEXT\"} }],",
+      "  stream: true,",
+      "});",
+      "for await (const chunk of stream) {",
+      "  process.stdout.write(chunk.choices[0]?.delta?.content ?? '');",
+      "}"
+    ],
+    "description": "Stream a completion and write tokens as they arrive."
+  },
+  "UrStack: OpenAI Tool Calling (JS)": {
+    "prefix": "ur-openai-function",
+    "body": [
+      "const tools = [{",
+      "  type: 'function',",
+      "  function: {",
+      "    name: 'get_weather',",
+      "    description: 'Get current weather for a city',",
+      "    parameters: {",
+      "      type: 'object',",
+      "      properties: { city: { type: 'string' } },",
+      "      required: ['city'],",
+      "    },",
+      "  },",
+      "}];",
+      "",
+      "const res = await client.chat.completions.create({",
+      "  model: 'gpt-4o',",
+      "  messages: [{ role: 'user', content: ${1:\"$TM_SELECTED_TEXT\"} }],",
+      "  tools,",
+      "  tool_choice: 'auto',",
+      "});",
+      "console.log(res.choices[0].message.tool_calls);"
+    ],
+    "description": "OpenAI tool/function calling starter."
+  },
+  "UrStack: Anthropic Claude Chat (JS)": {
+    "prefix": "ur-anthropic-chat",
+    "body": [
+      "import Anthropic from '@anthropic-ai/sdk';",
+      "",
+      "const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });",
+      "",
+      "const msg = await anthropic.messages.create({",
+      "  model: 'claude-3-5-sonnet-20241022',",
+      "  max_tokens: 1024,",
+      "  system: 'You are a helpful assistant.',",
+      "  messages: [{ role: 'user', content: ${1:\"$TM_SELECTED_TEXT\"} }],",
+      "});",
+      "console.log(msg.content[0].text);"
+    ],
+    "description": "Claude chat completion."
+  },
+  "UrStack: Ollama Local Chat (JS)": {
+    "prefix": "ur-ollama-chat",
+    "body": [
+      "const res = await fetch('http://localhost:11434/api/chat', {",
+      "  method: 'POST',",
+      "  headers: { 'Content-Type': 'application/json' },",
+      "  body: JSON.stringify({",
+      "    model: 'llama3.1',",
+      "    messages: [{ role: 'user', content: ${1:\"$TM_SELECTED_TEXT\"} }],",
+      "    stream: false,",
+      "  }),",
+      "});",
+      "const data = await res.json();",
+      "console.log(data.message.content);"
+    ],
+    "description": "Chat with a local Ollama model."
+  },
+  "UrStack: Retry with Backoff (JS)": {
+    "prefix": "ur-retry-backoff",
+    "body": [
+      "const sleep = (ms) => new Promise((r) => setTimeout(r, ms));",
+      "",
+      "async function retry(fn, retries = 5, base = 1000, cap = 60000) {",
+      "  for (let attempt = 0; attempt < retries; attempt++) {",
+      "    try {",
+      "      return await fn();",
+      "    } catch (err) {",
+      "      if (attempt === retries - 1) throw err;",
+      "      const delay = Math.min(cap, base * 2 ** attempt) + Math.random() * 1000;",
+      "      await sleep(delay);",
+      "    }",
+      "  }",
+      "}"
+    ],
+    "description": "Retry wrapper for 429/5xx errors with jitter."
+  },
+  "UrStack: Safe Env Loader (JS)": {
+    "prefix": "ur-env-safe",
+    "body": [
+      "function requireEnv(name) {",
+      "  const value = process.env[name];",
+      "  if (!value) throw new Error('Missing required env var: ' + name);",
+      "  return value;",
+      "}",
+      "",
+      "const OPENAI_API_KEY = requireEnv('OPENAI_API_KEY');"
+    ],
+    "description": "Fail fast when a required key is missing."
+  },
+  "UrStack: Embeddings (JS)": {
+    "prefix": "ur-embeddings",
+    "body": [
+      "const emb = await client.embeddings.create({",
+      "  model: 'text-embedding-3-small',",
+      "  input: ${1:\"$TM_SELECTED_TEXT\"},",
+      "});",
+      "console.log('dimensions:', emb.data[0].embedding.length);"
+    ],
+    "description": "Generate embeddings for search or RAG."
+  },
+  "UrStack: Next.js AI Route Handler": {
+    "prefix": "ur-next-ai-route",
+    "body": [
+      "import OpenAI from 'openai';",
+      "",
+      "const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });",
+      "",
+      "export async function POST(req) {",
+      "  const { prompt } = await req.json();",
+      "  const r = await client.chat.completions.create({",
+      "    model: 'gpt-4o',",
+      "    messages: [{ role: 'user', content: prompt }],",
+      "  });",
+      "  return Response.json({ answer: r.choices[0].message.content });",
+      "}"
+    ],
+    "description": "Next.js App Router POST handler that keeps the key server-side."
+  },
+  "UrStack: Express AI Route": {
+    "prefix": "ur-express-ai",
+    "body": [
+      "import express from 'express';",
+      "import OpenAI from 'openai';",
+      "",
+      "const app = express();",
+      "app.use(express.json());",
+      "const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });",
+      "",
+      "app.post('/api/ask', async (req, res) => {",
+      "  try {",
+      "    const r = await client.chat.completions.create({",
+      "      model: 'gpt-4o',",
+      "      messages: [{ role: 'user', content: req.body.prompt }],",
+      "    });",
+      "    res.json({ answer: r.choices[0].message.content });",
+      "  } catch (err) {",
+      "    res.status(500).json({ error: err.message });",
+      "  }",
+      "});",
+      "",
+      "app.listen(3000);"
+    ],
+    "description": "Express endpoint proxying to OpenAI."
+  },
+  "UrStack: SSE Streaming Response": {
+    "prefix": "ur-sse-stream",
+    "body": [
+      "const stream = await client.chat.completions.create({",
+      "  model: 'gpt-4o',",
+      "  messages: [{ role: 'user', content: ${1:\"$TM_SELECTED_TEXT\"} }],",
+      "  stream: true,",
+      "});",
+      "",
+      "const encoder = new TextEncoder();",
+      "const body = new ReadableStream({",
+      "  async start(controller) {",
+      "    for await (const chunk of stream) {",
+      "      const text = chunk.choices[0]?.delta?.content ?? '';",
+      "      const payload = 'data: ' + JSON.stringify({ text }) + '",
+      "",
+      "';",
+      "      controller.enqueue(encoder.encode(payload));",
+      "    }",
+      "    controller.close();",
+      "  },",
+      "});",
+      "",
+      "return new Response(body, { headers: { 'Content-Type': 'text/event-stream' } });"
+    ],
+    "description": "Server-sent events bridge for streaming to a browser."
+  },
+  "UrStack: Cost Guard (JS)": {
+    "prefix": "ur-cost-guard",
+    "body": [
+      "let spent = 0;",
+      "const MAX_COST_USD = 2.0;",
+      "",
+      "function charge(tokensIn, tokensOut, priceIn = 5e-6, priceOut = 1.5e-5) {",
+      "  const cost = tokensIn * priceIn + tokensOut * priceOut;",
+      "  if (spent + cost > MAX_COST_USD) {",
+      "    throw new Error('Spend ceiling hit: $' + spent.toFixed(4) + ' + $' + cost.toFixed(4));",
+      "  }",
+      "  spent += cost;",
+      "  return cost;",
+      "}"
+    ],
+    "description": "Hard per-task spend ceiling."
+  },
+  "UrStack: Token Estimate (JS)": {
+    "prefix": "ur-token-estimate",
+    "body": [
+      "function estimateTokens(text) {",
+      "  // Rough heuristic: about 4 characters per token for English",
+      "  return Math.ceil(text.length / 4);",
+      "}",
+      "",
+      "console.log('approx tokens:', estimateTokens(${1:\"$TM_SELECTED_TEXT\"}));"
+    ],
+    "description": "Cheap token estimate without a tokenizer dependency."
+  },
+  "UrStack: JSON Mode Output": {
+    "prefix": "ur-json-mode",
+    "body": [
+      "const r = await client.chat.completions.create({",
+      "  model: 'gpt-4o',",
+      "  response_format: { type: 'json_object' },",
+      "  messages: [",
+      "    { role: 'system', content: 'Reply with JSON only.' },",
+      "    { role: 'user', content: ${1:\"$TM_SELECTED_TEXT\"} },",
+      "  ],",
+      "});",
+      "const data = JSON.parse(r.choices[0].message.content);",
+      "console.log(data);"
+    ],
+    "description": "Force valid JSON output and parse it."
+  }
+}
