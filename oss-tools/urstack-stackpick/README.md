@@ -8,9 +8,16 @@ Zero dependencies. Works offline.
 
 ## Install
 
+Not published on npm yet — run it straight from this repo, or link it so `urstack-stackpick` is on your PATH:
+
 ```bash
-npx urstack-stackpick
+git clone https://github.com/apchow/urstackai
+cd urstackai/oss-tools/urstack-stackpick
+node bin/cli.js --help        # run in place, nothing to install
+npm link                    # optional: global `urstack-stackpick` command
 ```
+
+Node 16+ and nothing else: no dependencies, no network calls, no account.
 
 ## Usage
 

@@ -8,9 +8,16 @@ Zero dependencies. Runs offline.
 
 ## Install
 
+Not published on npm yet — run it straight from this repo, or link it so `urstack-trace` is on your PATH:
+
 ```bash
-npx urstack-trace
+git clone https://github.com/apchow/urstackai
+cd urstackai/oss-tools/urstack-trace
+node bin/cli.js --help        # run in place, nothing to install
+npm link                    # optional: global `urstack-trace` command
 ```
+
+Node 16+ and nothing else: no dependencies, no network calls, no account.
 
 ## Usage
 

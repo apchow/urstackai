@@ -8,9 +8,16 @@ Zero dependencies. Nothing leaves your machine.
 
 ## Install
 
+Not published on npm yet — run it straight from this repo, or link it so `urstack-envscan` is on your PATH:
+
 ```bash
-npx urstack-envscan
+git clone https://github.com/apchow/urstackai
+cd urstackai/oss-tools/urstack-envscan
+node bin/cli.js --help        # run in place, nothing to install
+npm link                    # optional: global `urstack-envscan` command
 ```
+
+Node 16+ and nothing else: no dependencies, no network calls, no account.
 
 ## Usage
 

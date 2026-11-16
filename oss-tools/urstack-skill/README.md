@@ -5,10 +5,16 @@ follow.
 
 ## Install
 
+Not published on npm yet — run it straight from this repo, or link it so `urstack-skill` is on your PATH:
+
 ```bash
-npx urstack-skill new "pr review"
-cd oss-tools/urstack-skill && npm link
+git clone https://github.com/apchow/urstackai
+cd urstackai/oss-tools/urstack-skill
+node bin/urstack-skill.js --help        # run in place, nothing to install
+npm link                    # optional: global `urstack-skill` command
 ```
+
+Node 16+ and nothing else: no dependencies, no network calls, no account.
 
 ## Usage
 
